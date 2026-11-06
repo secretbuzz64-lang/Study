@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-StudySync - Ultra Professional AI Presentation Generator</title>
+    <title>AI-StudySync - Smart Prezentatsiya va Test Generatori Platformasi</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -25,16 +25,14 @@
                         }
                     },
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                        mono: ['Fira Code', 'monospace']
+                        sans: ['Inter', 'sans-serif']
                     }
                 }
             }
         }
     </script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,400&display=swap" rel="stylesheet">
+    <!-- Google Font Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -50,9 +48,6 @@
             background: rgba(17, 24, 39, 0.85);
             backdrop-filter: blur(12px);
         }
-        .gaming-glow {
-            box-shadow: 0 0 30px rgba(236, 72, 153, 0.25), 0 0 15px rgba(139, 92, 246, 0.3);
-        }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-300">
@@ -60,38 +55,50 @@
     <!-- NAVBAR HEADER -->
     <header class="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 glass-panel">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <!-- Logo & Tagline -->
             <div class="flex items-center space-x-3 cursor-pointer" onclick="switchTab('presentation')">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-purple-600 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30">
-                    <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+                    <i class="fa-solid fa-brain text-xl"></i>
                 </div>
                 <div>
-                    <span class="text-xl font-black bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 bg-clip-text text-transparent">AI-StudySync</span>
-                    <span class="hidden sm:inline-block text-[10px] bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-2 py-0.5 rounded-full ml-2 font-extrabold uppercase tracking-widest">v5.0 Ultimate AI</span>
+                    <span class="text-xl font-extrabold bg-gradient-to-r from-blue-600 via-indigo-500 to-purple-500 bg-clip-text text-transparent">AI-StudySync</span>
+                    <span class="hidden sm:inline-block text-xs bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 px-2 py-0.5 rounded-full ml-2 font-medium">v2.5 Smart</span>
                 </div>
             </div>
 
+            <!-- Navigation Links -->
             <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 bg-slate-100 dark:bg-slate-900 p-1.5 rounded-xl border border-slate-200 dark:border-slate-800">
                 <button id="nav-presentation" onclick="switchTab('presentation')" class="px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm">
-                    <i class="fa-solid fa-file-powerpoint mr-2"></i><span>AI Slayd Generator</span>
+                    <i class="fa-solid fa-file-powerpoint mr-2"></i><span data-i18n="nav-prez">Slayd Generator</span>
                 </button>
                 <button id="nav-quiz" onclick="switchTab('quiz')" class="px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-                    <i class="fa-solid fa-vial-circle-check mr-2"></i><span>Smart Testlar</span>
+                    <i class="fa-solid fa-vial-circle-check mr-2"></i><span data-i18n="nav-quiz">Smart Testlar</span>
                 </button>
                 <button id="nav-scratchpad" onclick="switchTab('scratchpad')" class="px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-                    <i class="fa-solid fa-note-sticky mr-2"></i><span>Noutbuk / Konspekt</span>
+                    <i class="fa-solid fa-note-sticky mr-2"></i><span data-i18n="nav-notes">Noutbuk / Konspekt</span>
                 </button>
                 <button id="nav-pricing" onclick="switchTab('pricing')" class="px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
-                    <i class="fa-solid fa-crown text-amber-500 mr-2"></i><span>Tariflar</span>
+                    <i class="fa-solid fa-crown text-amber-500 mr-2"></i><span data-i18n="nav-pricing">Tariflar</span>
                 </button>
             </nav>
 
+            <!-- Right Controls: Theme, Language, Profile/Pro Upgrade -->
             <div class="flex items-center space-x-3">
+                <!-- Lang Switcher -->
+                <button onclick="toggleLanguage()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-xs font-bold text-slate-700 dark:text-slate-300 transition-colors flex items-center gap-1.5 border border-slate-200 dark:border-slate-800">
+                    <i class="fa-solid fa-globe text-indigo-500"></i>
+                    <span id="lang-label">UZ</span>
+                </button>
+
+                <!-- Dark Mode Toggle -->
                 <button onclick="toggleDarkMode()" class="p-2 rounded-xl bg-slate-100 dark:bg-slate-900 hover:bg-slate-200 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-colors border border-slate-200 dark:border-slate-800">
                     <i id="theme-icon" class="fa-solid fa-moon"></i>
                 </button>
+
+                <!-- Action Button -->
                 <button onclick="openSubscriptionModal('Pro Plan')" class="hidden sm:flex items-center space-x-2 px-3.5 py-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 text-white font-semibold text-xs shadow-md hover:opacity-95 transition-opacity">
                     <i class="fa-solid fa-bolt"></i>
-                    <span>PRO versiyaga o'tish</span>
+                    <span data-i18n="btn-upgrade">PRO versiyaga o'tish</span>
                 </button>
             </div>
         </div>
@@ -101,24 +108,60 @@
     <div class="md:hidden fixed bottom-0 left-0 right-0 border-t border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md z-40 px-2 py-2 flex justify-around items-center">
         <button onclick="switchTab('presentation')" class="mobile-nav flex flex-col items-center py-1 text-xs font-medium text-blue-600 dark:text-blue-400" id="m-nav-presentation">
             <i class="fa-solid fa-file-powerpoint text-base"></i>
-            <span class="mt-0.5">Slaydlar</span>
+            <span class="mt-0.5" data-i18n="m-prez">Slaydlar</span>
         </button>
         <button onclick="switchTab('quiz')" class="mobile-nav flex flex-col items-center py-1 text-xs font-medium text-slate-500 dark:text-slate-400" id="m-nav-quiz">
             <i class="fa-solid fa-vial-circle-check text-base"></i>
-            <span class="mt-0.5">Testlar</span>
+            <span class="mt-0.5" data-i18n="m-quiz">Testlar</span>
         </button>
         <button onclick="switchTab('scratchpad')" class="mobile-nav flex flex-col items-center py-1 text-xs font-medium text-slate-500 dark:text-slate-400" id="m-nav-scratchpad">
             <i class="fa-solid fa-note-sticky text-base"></i>
-            <span class="mt-0.5">Noutbuk</span>
+            <span class="mt-0.5" data-i18n="m-notes">Noutbuk</span>
         </button>
         <button onclick="switchTab('pricing')" class="mobile-nav flex flex-col items-center py-1 text-xs font-medium text-slate-500 dark:text-slate-400" id="m-nav-pricing">
             <i class="fa-solid fa-crown text-amber-500 text-base"></i>
-            <span class="mt-0.5">Tariflar</span>
+            <span class="mt-0.5" data-i18n="m-pricing">Tariflar</span>
         </button>
     </div>
 
     <!-- MAIN CONTENT CONTAINER -->
     <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 pb-20 md:pb-8">
+
+        <!-- STATS & HERO BANNER CONTAINER -->
+        <section class="mb-8 rounded-3xl bg-gradient-to-r from-blue-900 via-indigo-900 to-slate-900 text-white p-6 sm:p-8 shadow-2xl relative overflow-hidden border border-indigo-500/20">
+            <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-indigo-500/20 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute right-1/3 -top-10 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+                <div class="max-w-2xl">
+                    <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/30 text-indigo-200 text-xs font-semibold tracking-wide border border-indigo-400/30 mb-3">
+                        <i class="fa-solid fa-sparkles text-amber-400"></i> AI-Powered Engine
+                    </span>
+                    <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+                        <span data-i18n="hero-title">Talabalar va Biznes uchun Sun'iy Intellekt Assistenti</span>
+                    </h1>
+                    <p class="mt-2 text-slate-300 text-sm sm:text-base leading-relaxed" data-i18n="hero-desc">
+                        1 daqiqada taqdimot slaydlarini yarating, o'quvchilar yoki xodimlar uchun testlar generatsiya qiling hamda barcha fikrlaringizni tartiblang.
+                    </p>
+                </div>
+
+                <!-- Stats counter cards -->
+                <div class="grid grid-cols-3 gap-3 sm:gap-4 shrink-0">
+                    <div class="bg-white/10 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/10 text-center">
+                        <div class="text-xl sm:text-2xl font-black text-amber-400">10k+</div>
+                        <div class="text-[11px] sm:text-xs text-slate-300" data-i18n="stat-slides">Slaydlar</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/10 text-center">
+                        <div class="text-xl sm:text-2xl font-black text-emerald-400">98%</div>
+                        <div class="text-[11px] sm:text-xs text-slate-300" data-i18n="stat-accuracy">Aniqlik</div>
+                    </div>
+                    <div class="bg-white/10 backdrop-blur-md p-3 sm:p-4 rounded-2xl border border-white/10 text-center">
+                        <div class="text-xl sm:text-2xl font-black text-cyan-400">50k+</div>
+                        <div class="text-[11px] sm:text-xs text-slate-300" data-i18n="stat-tests">Testlar</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
         <!-- TAB 1: PRESENTATION GENERATOR -->
         <section id="tab-presentation" class="tab-content">
@@ -127,72 +170,77 @@
                 <div class="lg:col-span-5 space-y-6">
                     <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
                         <h2 class="text-lg font-bold flex items-center gap-2 mb-4">
-                            <i class="fa-solid fa-brain text-indigo-500"></i>
-                            <span>Deep Context AI Slayd Generator</span>
+                            <i class="fa-solid fa-wand-magic-sparkles text-indigo-500"></i>
+                            <span data-i18n="prez-gen-header">Slayd Generatori</span>
                         </h2>
-                        
+
+                        <!-- Topic Input -->
                         <div class="space-y-4">
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
-                                    Prezentatsiya Mavzusi
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1" data-i18n="prez-lbl-topic">
+                                    Mavzu yoki Biznes G'oya
                                 </label>
-                                <div class="relative">
-                                    <input type="text" id="prez-topic" placeholder="Masalan: Minecraft, GTA 5, O'zbekiston tarixi, Sun'iy Intellekt..."
-                                           class="w-full pl-10 pr-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 font-medium">
-                                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3.5 text-slate-400"></i>
+                                <input type="text" id="prez-topic" placeholder="Masalan: AI ta'lim ilovasi, FinTech Startap, Marketing Strategiyasi..."
+                                       class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            </div>
+
+                            <!-- Target Audience Selection -->
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1" data-i18n="prez-lbl-type">
+                                    Maqsadli Foydalanish Sohasi
+                                </label>
+                                <div class="grid grid-cols-2 gap-2">
+                                    <button type="button" onclick="setPrezAudience('business')" id="aud-business" class="aud-btn px-4 py-2.5 rounded-xl border border-indigo-500 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-briefcase"></i> <span data-i18n="aud-biz">Biznes & Startap</span>
+                                    </button>
+                                    <button type="button" onclick="setPrezAudience('education')" id="aud-education" class="aud-btn px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs font-bold flex items-center justify-center gap-2">
+                                        <i class="fa-solid fa-graduation-cap"></i> <span data-i18n="aud-edu">O'qish & Ta'lim</span>
+                                    </button>
                                 </div>
                             </div>
 
-                            <div class="flex items-center gap-3 p-3 rounded-xl bg-indigo-500/10 border border-indigo-500/20">
-                                <input type="checkbox" id="use-google-search" checked class="w-4 h-4 text-indigo-600 rounded focus:ring-indigo-500 cursor-pointer">
-                                <label for="use-google-search" class="text-xs font-bold text-indigo-700 dark:text-indigo-300 cursor-pointer flex items-center gap-1.5">
-                                    <i class="fa-brands fa-google text-indigo-500"></i> Real-time Context Analysis & Fact Checker
-                                </label>
-                            </div>
-
+                            <!-- Context / Details -->
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
-                                    Slaydlar Soni (Maksimal 15 ta)
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1" data-i18n="prez-lbl-details">
+                                    Qo'shimcha Konseptual Ma'lumot (Ixtiyoriy)
                                 </label>
-                                <div class="flex items-center gap-3">
-                                    <input type="range" id="slide-count-range" min="4" max="15" value="8" oninput="document.getElementById('slide-count-val').innerText = this.value"
-                                           class="w-full accent-indigo-500 cursor-pointer">
-                                    <span id="slide-count-val" class="px-3 py-1 bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 font-bold rounded-lg text-sm">8</span>
-                                </div>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
-                                    Dizayn va Vizual Uslub
-                                </label>
-                                <select id="style-selector" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 font-semibold">
-                                    <option value="auto">✨ AI Auto Domain-Match (Mavzuga mos avto-tanlov)</option>
-                                    <option value="cinematic_gaming">🎮 Cinematic Gaming (O'yinlar uchun)</option>
-                                    <option value="dark_premium">👑 Dark Premium</option>
-                                    <option value="apple_inspired">🍏 Apple Inspired Minimal</option>
-                                    <option value="glassmorphism">💎 Modern Glassmorphism</option>
-                                    <option value="cyberpunk_neon">🤖 Cyberpunk Neon</option>
-                                    <option value="futuristic_3d">🔮 3D Futuristic</option>
-                                    <option value="minimalist">⚪ Minimalist Pure</option>
-                                    <option value="editorial_mag">📰 Magazine Editorial</option>
-                                    <option value="corporate_prof">💼 Professional Corporate</option>
-                                    <option value="creative_gradient">🎨 Colorful Creative</option>
-                                    <option value="documentary_style">🏛️ Documentary Style (Tarix va Fan)</option>
-                                    <option value="luxury_presentation">💎 Luxury Presentation</option>
-                                </select>
-                            </div>
-
-                            <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
-                                    Qo'shimcha Ma'lumot yoki Maxsus Yo'nalish
-                                </label>
-                                <textarea id="prez-details" rows="3" placeholder="Masalan: Faqat faktlar, o'yin tarixi va eng so'nggi yangilanishlarga urg'u berilsin..."
+                                <textarea id="prez-details" rows="4" placeholder="Konspekt, ma'ruza matni yoki startapingiz haqida qisqacha ma'lumot qoldiring..."
                                           class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 custom-scrollbar"></textarea>
                             </div>
 
+                            <!-- Presentation Image Upload -->
+                            <div>
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-2">
+                                    <i class="fa-solid fa-image text-indigo-500 mr-1"></i> Slaydga rasm qo'shish (ixtiyoriy)
+                                </label>
+                                <label for="prez-image" class="flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl border-2 border-dashed border-slate-300 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50 hover:border-indigo-500 cursor-pointer transition-colors text-sm font-semibold text-slate-600 dark:text-slate-300">
+                                    <i class="fa-solid fa-cloud-arrow-up text-indigo-500"></i>
+                                    Rasm tanlash
+                                </label>
+                                <input type="file" id="prez-image" accept="image/*" class="hidden" onchange="handlePresentationImage(event)">
+                                <div id="prez-image-preview-wrap" class="hidden mt-3 relative">
+                                    <img id="prez-image-preview" alt="Tanlangan rasm" class="w-full max-h-48 object-contain rounded-xl border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800">
+                                    <button type="button" onclick="removePresentationImage()" class="mt-2 text-xs font-semibold text-rose-500 hover:text-rose-600">
+                                        <i class="fa-solid fa-trash-can mr-1"></i> Rasmni olib tashlash
+                                    </button>
+                                </div>
+                                <p class="text-[11px] text-slate-400 mt-1">PNG, JPG yoki WEBP. Rasm birinchi slaydda ko'rsatiladi.</p>
+                            </div>
+
+                            <!-- Preset Quick Topics -->
+                            <div>
+                                <span class="text-xs font-semibold text-slate-500" data-i18n="quick-ideas">Mashhur shablonlar:</span>
+                                <div class="flex flex-wrap gap-1.5 mt-2">
+                                    <button onclick="fillPresetTopic('AI-StudySync Platformasi')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 transition-colors">🚀 AI-StudySync</button>
+                                    <button onclick="fillPresetTopic('EcoDelivery Green Logistics')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 transition-colors">🌱 Green Logistics</button>
+                                    <button onclick="fillPresetTopic('Kiberxavfsizlik Asoslari')" class="text-[11px] px-2.5 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 hover:bg-indigo-500 hover:text-white dark:hover:bg-indigo-600 transition-colors">🛡️ Kiberxavfsizlik</button>
+                                </div>
+                            </div>
+
+                            <!-- Generate Action Button -->
                             <button onclick="generatePresentation()" id="btn-gen-prez" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 hover:opacity-95 text-white font-bold text-sm shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2 transition-all">
-                                <i class="fa-solid fa-wand-magic-sparkles"></i>
-                                Professional Prezentatsiya Yaratish
+                                <i class="fa-solid fa-bolt-lightning"></i>
+                                <span data-i18n="btn-generate-prez">Prezentatsiya Slaydlarini Yaratish</span>
                             </button>
                         </div>
                     </div>
@@ -203,75 +251,80 @@
                     <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl min-h-[500px] flex flex-col justify-between">
                         <div>
                             <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+                                <h3 class="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+                                    <i class="fa-solid fa-sliders text-indigo-500"></i>
+                                    <span data-i18n="slides-result-title">Natija: Generatsiya Qilingan Pitch Deck</span>
+                                </h3>
                                 <div class="flex items-center gap-2">
-                                    <span id="active-theme-badge" class="px-2.5 py-1 rounded-md text-[10px] font-black uppercase bg-indigo-600 text-white tracking-widest">Theme: Dynamic AI</span>
-                                    <span id="active-domain-badge" class="px-2 py-1 rounded-md text-[10px] font-bold uppercase bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300">Domain: Auto</span>
-                                </div>
-                                <div class="flex items-center gap-2">
-                                    <button id="btn-presentation-mode" onclick="openFullscreenPresentation()" class="hidden text-xs px-3 py-1.5 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold transition-all shadow-md flex items-center gap-1.5">
-                                        <i class="fa-solid fa-expand"></i> Fullscreen Mode
-                                    </button>
                                     <button onclick="copyGeneratedSlides()" class="text-xs px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 font-semibold transition-colors flex items-center gap-1.5">
-                                        <i class="fa-regular fa-copy"></i> Nusxalash
+                                        <i class="fa-regular fa-copy"></i> <span data-i18n="btn-copy">Nusxalash</span>
                                     </button>
                                     <button onclick="printSlides()" class="text-xs px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-600 dark:bg-indigo-950/60 dark:text-indigo-400 hover:bg-indigo-100 font-semibold transition-colors flex items-center gap-1.5">
-                                        <i class="fa-solid fa-print"></i> PDF
+                                        <i class="fa-solid fa-print"></i> PDF/Chop Etish
                                     </button>
                                 </div>
                             </div>
 
-                            <div id="slides-container" class="mt-6 space-y-6">
-                                <div class="text-center py-20 px-4 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-3xl">
-                                    <div class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-indigo-500/10 to-purple-500/10 text-indigo-500 flex items-center justify-center mx-auto mb-4 text-3xl border border-indigo-500/20">
+                            <!-- Slide Content Cards Container -->
+                            <div id="slides-container" class="mt-6 space-y-4">
+                                <!-- Default Placeholder State -->
+                                <div class="text-center py-16 px-4 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl">
+                                    <div class="w-16 h-16 rounded-full bg-indigo-50 dark:bg-indigo-950/50 text-indigo-500 flex items-center justify-center mx-auto mb-3 text-2xl">
                                         <i class="fa-solid fa-layer-group"></i>
                                     </div>
-                                    <h4 class="font-extrabold text-slate-800 dark:text-slate-200 text-base">Prezentatsiya loyihasi hali tayyorlanmadi</h4>
-                                    <p class="text-xs text-slate-400 mt-1 max-w-md mx-auto">
-                                        Istalgan mavzu (masalan, Minecraft, GTA 5, O'zbekiston tarixi yoki Sun'iy Intellekt) kiriting va avtomatik ravishda moslashtirilgan tayyor prezentatsiyani oling.
+                                    <h4 class="font-semibold text-slate-700 dark:text-slate-300" data-i18n="ph-title">Slaydlar hali tuzilmadi</h4>
+                                    <p class="text-xs text-slate-400 mt-1 max-w-sm mx-auto" data-i18n="ph-desc">
+                                        Chap tomondagi maydonga mavzu kiriting va "Prezentatsiya Slaydlarini Yaratish" tugmasini bosing.
                                     </p>
                                 </div>
                             </div>
                         </div>
 
+                        <!-- Footer indicator -->
                         <div class="mt-6 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-xs text-slate-400">
-                            <span id="slide-count-indicator">0 slayd tayyor</span>
-                            <span class="flex items-center gap-1"><i class="fa-solid fa-shield-halved text-emerald-500"></i> AI Context Guarantee</span>
+                            <span id="slide-count-indicator">0 slayd mavjud</span>
+                            <span class="flex items-center gap-1"><i class="fa-solid fa-shield-halved text-emerald-500"></i> Auto-formatted by AI</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- TAB 2: INTERACTIVE QUIZ GENERATOR -->
+        <!-- TAB 2: INTERACTIVE QUIZ & ASSESSMENT GENERATOR -->
         <section id="tab-quiz" class="tab-content hidden">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Controls & Quiz Settings -->
                 <div class="lg:col-span-5 space-y-6">
                     <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
                         <h2 class="text-lg font-bold flex items-center gap-2 mb-4">
                             <i class="fa-solid fa-vial text-emerald-500"></i>
-                            Smart Test Generatori
+                            <span data-i18n="quiz-gen-header">Smart Test Generatori</span>
                         </h2>
 
+                        <!-- Audience Mode Toggle -->
                         <div class="mb-5 p-1 bg-slate-100 dark:bg-slate-800 rounded-2xl flex border border-slate-200 dark:border-slate-700">
                             <button id="mode-student-btn" onclick="setQuizMode('student')" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-user-graduate"></i> O'quvchilar uchun
+                                <i class="fa-solid fa-user-graduate"></i> <span data-i18n="mode-student">O'quvchilar uchun</span>
                             </button>
                             <button id="mode-business-btn" onclick="setQuizMode('business')" class="flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center justify-center gap-1.5">
-                                <i class="fa-solid fa-briefcase"></i> Biznes / HR uchun
+                                <i class="fa-solid fa-briefcase"></i> <span data-i18n="mode-biz">Biznes / HR uchun</span>
                             </button>
                         </div>
 
                         <div class="space-y-4">
+                            <!-- Subject/Category Selection -->
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1" data-i18n="quiz-lbl-category">
                                     Kategoriya va Yo'nalish
                                 </label>
                                 <select id="quiz-category" class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
+                                    <!-- Dynamic options filled via JS -->
                                 </select>
                             </div>
 
+                            <!-- Question Count -->
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1" data-i18n="quiz-lbl-count">
                                     Savollar Soni
                                 </label>
                                 <div class="flex items-center gap-3">
@@ -281,36 +334,43 @@
                                 </div>
                             </div>
 
+                            <!-- Custom Keyword / Context -->
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1" data-i18n="quiz-lbl-custom">
                                     Maxsus Kalit So'zlar yoki Mavzu
                                 </label>
-                                <input type="text" id="quiz-custom-topic" placeholder="Masalan: JavaScript ES6, Startup Finance..."
+                                <input type="text" id="quiz-custom-topic" placeholder="Masalan: JavaScript ES6, Startup Finance, Client Onboarding..."
                                        class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500">
                             </div>
 
+                            <!-- Start Quiz Generator -->
                             <button onclick="generateQuiz()" id="btn-gen-quiz" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:opacity-95 text-white font-bold text-sm shadow-lg shadow-emerald-500/25 flex items-center justify-center gap-2 transition-all">
                                 <i class="fa-solid fa-play"></i>
-                                Testni Shakllantirish va Boshlash
+                                <span data-i18n="btn-generate-quiz">Testni Shakllantirish va Boshlash</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Quiz Interactive Player Workspace -->
                 <div class="lg:col-span-7">
                     <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl min-h-[500px] flex flex-col justify-between" id="quiz-player-box">
+
+                        <!-- Quiz Idle Screen -->
                         <div id="quiz-idle-view" class="text-center py-20 px-4">
                             <div class="w-20 h-20 rounded-3xl bg-emerald-50 dark:bg-emerald-950/50 text-emerald-500 flex items-center justify-center mx-auto mb-4 text-3xl border border-emerald-500/20">
                                 <i class="fa-solid fa-clipboard-question"></i>
                             </div>
-                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">Interaktiv Test Rejimi</h3>
-                            <p class="text-xs text-slate-400 mt-2 max-w-md mx-auto">
-                                Chap tomondan rejim va kategoriyani tanlab, "Testni Shakllantirish va Boshlash" tugmasini bosing.
+                            <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100" data-i18n="quiz-idle-title">Interaktiv Test Rejimi</h3>
+                            <p class="text-xs text-slate-400 mt-2 max-w-md mx-auto" data-i18n="quiz-idle-desc">
+                                Chap tomondan rejim va kategoriyani tanlab, "Testni Shakllantirish va Boshlash" tugmasini bosing. AI darhol bilimlarni tekshirish testini tuzib beradi.
                             </p>
                         </div>
 
+                        <!-- Active Quiz View (Hidden by default) -->
                         <div id="quiz-active-view" class="hidden flex-1 flex flex-col justify-between">
                             <div>
+                                <!-- Header Progress & Timer -->
                                 <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
                                     <span class="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider flex items-center gap-1.5" id="quiz-category-badge">
                                         <i class="fa-solid fa-tag"></i> General Knowledge
@@ -320,36 +380,42 @@
                                     </span>
                                 </div>
 
+                                <!-- Progress Bar -->
                                 <div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full mt-4 overflow-hidden">
                                     <div id="quiz-progress-bar" class="bg-gradient-to-r from-emerald-500 to-teal-500 h-full w-0 transition-all duration-300"></div>
                                 </div>
 
+                                <!-- Question Title -->
                                 <div class="mt-6">
                                     <h3 class="text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-100 leading-snug" id="quiz-question-text">
                                         Savol yuklanmoqda...
                                     </h3>
                                 </div>
 
+                                <!-- Options Container -->
                                 <div class="mt-6 space-y-3" id="quiz-options-container">
+                                    <!-- Dynamic options injected here -->
                                 </div>
                             </div>
 
+                            <!-- Bottom controls -->
                             <div class="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
                                 <div class="text-xs font-semibold text-slate-400" id="quiz-feedback-text">
                                     Javob variantlaridan birini tanlang
                                 </div>
                                 <button onclick="nextQuestion()" id="btn-next-q" disabled class="px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-400 font-bold text-xs transition-all flex items-center gap-2 cursor-not-allowed">
-                                    <span>Keyingisi</span> <i class="fa-solid fa-arrow-right"></i>
+                                    <span data-i18n="btn-next">Keyingisi</span> <i class="fa-solid fa-arrow-right"></i>
                                 </button>
                             </div>
                         </div>
 
+                        <!-- Quiz Result Summary View (Hidden by default) -->
                         <div id="quiz-result-view" class="hidden text-center py-12 px-4">
                             <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-amber-400 to-emerald-500 text-white flex items-center justify-center mx-auto mb-4 text-3xl shadow-lg">
                                 <i class="fa-solid fa-trophy"></i>
                             </div>
-                            <h3 class="text-2xl font-black text-slate-800 dark:text-slate-100">Natijangiz Tayyor!</h3>
-                            <p class="text-xs text-slate-400 mt-1">Testni muvaffaqiyatli yakunladingiz</p>
+                            <h3 class="text-2xl font-black text-slate-800 dark:text-slate-100" data-i18n="result-title">Natijangiz Tayyor!</h3>
+                            <p class="text-xs text-slate-400 mt-1" data-i18n="result-sub">Testni muvaffaqiyatli yakunladingiz</p>
 
                             <div class="my-6 inline-block bg-slate-50 dark:bg-slate-800/80 p-6 rounded-2xl border border-slate-200 dark:border-slate-700 min-w-[240px]">
                                 <div class="text-4xl font-black text-emerald-500" id="quiz-final-score">0 / 0</div>
@@ -358,10 +424,10 @@
 
                             <div class="flex justify-center gap-3">
                                 <button onclick="restartQuiz()" class="px-5 py-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold text-xs transition-colors flex items-center gap-2">
-                                    <i class="fa-solid fa-rotate-right"></i> Qayta topshirish
+                                    <i class="fa-solid fa-rotate-right"></i> <span data-i18n="btn-retry">Qayta topshirish</span>
                                 </button>
                                 <button onclick="switchTab('presentation')" class="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition-colors flex items-center gap-2">
-                                    <i class="fa-solid fa-file-powerpoint"></i> Slayd Yaratishga o'tish
+                                    <i class="fa-solid fa-file-powerpoint"></i> <span data-i18n="btn-go-prez">Slayd Yaratishga o'tish</span>
                                 </button>
                             </div>
                         </div>
@@ -374,16 +440,17 @@
         <!-- TAB 3: SCRATCHPAD / OFFLINE NOTES -->
         <section id="tab-scratchpad" class="tab-content hidden">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                <!-- Notes Manager -->
                 <div class="lg:col-span-5 space-y-6">
                     <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
                         <h2 class="text-lg font-bold flex items-center gap-2 mb-4">
                             <i class="fa-solid fa-pen-to-square text-purple-500"></i>
-                            Tezkor Konspekt va G'oyalar
+                            <span data-i18n="notes-header">Tezkor Konspekt va G'oyalar</span>
                         </h2>
 
                         <div class="space-y-4">
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1" data-i18n="note-title-lbl">
                                     G'oya yoki Konspekt Sarlavhasi
                                 </label>
                                 <input type="text" id="note-title" placeholder="Masalan: Startap strategiyasi, Imtihon savollari..."
@@ -391,34 +458,35 @@
                             </div>
 
                             <div>
-                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-1" data-i18n="note-body-lbl">
                                     Matn Mazmuni
                                 </label>
                                 <textarea id="note-body" rows="6" placeholder="Barcha muhim fikrlar, formulalar yoki rejalar shuyerga yozib boriladi..."
                                           class="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-purple-500 custom-scrollbar"></textarea>
                             </div>
 
-                            <button onclick="saveNote()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-95 text-white font-bold text-sm shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 transition-all">
-                                <i class="fa-solid fa-floppy-disk"></i>
-                                Xotirada Saqlash (Offline)
+                            <button onclick="saveNote()" class="w-full py-3.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-95 text-white font-bold text-sm shadow-lg shadow-purple-500/25 flex items-center justify-center gap-2 transition-all">         <i class="fa-solid fa-floppy-disk"></i>
+                                <span data-i18n="btn-save-note">Xotirada Saqlash (Offline)</span>
                             </button>
                         </div>
                     </div>
                 </div>
 
+                <!-- Saved Notes List -->
                 <div class="lg:col-span-7">
                     <div class="bg-white dark:bg-slate-900 p-6 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl min-h-[500px]">
                         <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
                             <h3 class="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
                                 <i class="fa-solid fa-bookmark text-purple-500"></i>
-                                Saqlangan G'oyalar va Konspektlar
+                                <span data-i18n="saved-notes-title">Saqlangan G'oyalar va Konspektlar</span>
                             </h3>
                             <button onclick="clearAllNotes()" class="text-xs text-rose-500 hover:text-rose-600 font-semibold transition-colors flex items-center gap-1">
-                                <i class="fa-solid fa-trash-can"></i> Barchasini o'chirish
+                                <i class="fa-solid fa-trash-can"></i> <span data-i18n="btn-clear-all">Barchasini o'chirish</span>
                             </button>
                         </div>
 
                         <div id="notes-list-container" class="mt-6 space-y-3">
+                            <!-- Dynamic saved notes loaded here -->
                         </div>
                     </div>
                 </div>
@@ -428,18 +496,19 @@
         <!-- TAB 4: PRICING & SUBSCRIPTION -->
         <section id="tab-pricing" class="tab-content hidden">
             <div class="text-center max-w-2xl mx-auto mb-10">
-                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-slate-100 tracking-tight" data-i18n="price-title">
                     O'zingizga Mos Tarifni Tanlang
                 </h2>
-                <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed">
+                <p class="text-xs sm:text-sm text-slate-400 mt-2 leading-relaxed" data-i18n="price-sub">
                     O'quvchilar, ta'lim muassasalari va yirik biznes vakillari uchun maxsus qulay narxlar.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                <!-- Free Plan -->
                 <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col justify-between">
                     <div>
-                        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold">Boshlang'ich</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold" data-i18n="plan-free-name">Boshlang'ich</span>
                         <div class="mt-4 flex items-baseline gap-1">
                             <span class="text-4xl font-black text-slate-800 dark:text-slate-100">$0</span>
                             <span class="text-xs text-slate-400">/oyiga</span>
@@ -447,6 +516,7 @@
                         <ul class="mt-6 space-y-3 text-xs text-slate-600 dark:text-slate-300">
                             <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Oyiga 3 ta presentation generatsiyasi</li>
                             <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Cheklangan 5 talik testlar</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Oddiy konspekt daftari</li>
                         </ul>
                     </div>
                     <button class="mt-8 w-full py-3 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-500 font-bold text-xs cursor-default">
@@ -454,20 +524,22 @@
                     </button>
                 </div>
 
+                <!-- Pro Plan (Featured) -->
                 <div class="bg-gradient-to-b from-indigo-600 to-purple-700 text-white p-8 rounded-3xl shadow-2xl relative transform md:-translate-y-2 flex flex-col justify-between border-2 border-indigo-400">
                     <span class="absolute -top-3.5 right-6 px-3 py-1 rounded-full bg-amber-400 text-slate-900 text-xs font-black uppercase tracking-wider shadow-md">
                         Eng Ommabop 🔥
                     </span>
                     <div>
-                        <span class="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold">PRO (Talaba va O'qituvchi)</span>
+                        <span class="px-3 py-1 rounded-full bg-white/20 text-white text-xs font-bold" data-i18n="plan-pro-name">PRO (Talaba va O'qituvchi)</span>
                         <div class="mt-4 flex items-baseline gap-1">
                             <span class="text-4xl font-black">$2.99</span>
                             <span class="text-xs text-indigo-200">/oyiga</span>
                         </div>
                         <ul class="mt-6 space-y-3 text-xs text-indigo-100">
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-300"></i> 15 tagacha slayd yaratish imkoniyati</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-300"></i> 12 xil Pro Presentation Design Themes</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-300"></i> Deep Context Gaming & History Engine</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-300"></i> Cheksiz Slaydlar Generatsiyasi</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-300"></i> Kengaytirilgan Test Generatori (10+ savol)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-300"></i> PDF va PPTX formatsiya eksporti</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-amber-300"></i> Ustuvor AI tezligi</li>
                         </ul>
                     </div>
                     <button onclick="openSubscriptionModal('Pro Plan ($2.99/mo)')" class="mt-8 w-full py-3.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-slate-900 font-extrabold text-xs shadow-lg transition-colors">
@@ -475,16 +547,19 @@
                     </button>
                 </div>
 
+                <!-- Enterprise Plan -->
                 <div class="bg-white dark:bg-slate-900 p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-lg flex flex-col justify-between">
                     <div>
-                        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold">Enterprise (Biznes)</span>
+                        <span class="px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-bold" data-i18n="plan-ent-name">Enterprise (Biznes)</span>
                         <div class="mt-4 flex items-baseline gap-1">
                             <span class="text-4xl font-black text-slate-800 dark:text-slate-100">$29.99</span>
                             <span class="text-xs text-slate-400">/oyiga</span>
                         </div>
                         <ul class="mt-6 space-y-3 text-xs text-slate-600 dark:text-slate-300">
                             <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Barcha PRO imkoniyatlari</li>
-                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Korporativ brendlangan shablonlar</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Jamoaviy HR attestatsiya paneli</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> Brendlangan shablonlar (Logo / Colors)</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-emerald-500"></i> 24/7 Shaxsiy Menejer Qo'llab-quvvatlashi</li>
                         </ul>
                     </div>
                     <button onclick="openSubscriptionModal('Enterprise Plan ($29.99/mo)')" class="mt-8 w-full py-3 rounded-xl bg-slate-900 dark:bg-slate-800 hover:bg-slate-800 text-white font-bold text-xs transition-colors">
@@ -495,36 +570,6 @@
         </section>
 
     </main>
-
-    <!-- FULLSCREEN PRESENTATION MODAL -->
-    <div id="canva-modal" class="fixed inset-0 bg-slate-950 z-50 hidden flex flex-col justify-between p-4 md:p-8">
-        <div class="flex items-center justify-between text-white border-b border-slate-800 pb-4">
-            <div class="flex items-center gap-3">
-                <span id="modal-theme-badge" class="px-3 py-1 rounded-full bg-indigo-600 text-xs font-black uppercase tracking-widest">
-                    PRESENTATION MODE
-                </span>
-                <span id="canva-title" class="font-bold text-sm text-slate-300 truncate max-w-md">Slayd Mode</span>
-            </div>
-            <button onclick="closeFullscreenPresentation()" class="text-slate-400 hover:text-white p-2">
-                <i class="fa-solid fa-xmark text-2xl"></i>
-            </button>
-        </div>
-
-        <div class="flex-1 my-6 flex items-center justify-center relative overflow-hidden">
-            <div id="canva-slide-stage" class="w-full max-w-5xl aspect-[16/9] rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col justify-between text-white relative transition-all duration-300">
-            </div>
-        </div>
-
-        <div class="flex items-center justify-between text-white max-w-xl mx-auto w-full bg-slate-900/90 p-3 rounded-2xl border border-slate-800 backdrop-blur-md">
-            <button onclick="prevCanvaSlide()" class="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-bold transition-all flex items-center gap-2">
-                <i class="fa-solid fa-arrow-left"></i> Oldingisi
-            </button>
-            <span id="canva-counter" class="text-xs font-mono font-bold text-indigo-400">1 / 1</span>
-            <button onclick="nextCanvaSlide()" class="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-xs font-bold transition-all flex items-center gap-2">
-                Keyingisi <i class="fa-solid fa-arrow-right"></i>
-            </button>
-        </div>
-    </div>
 
     <!-- SUBSCRIPTION MODAL -->
     <div id="sub-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
@@ -537,7 +582,7 @@
                     <i class="fa-solid fa-crown"></i>
                 </div>
                 <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100" id="sub-modal-title">Tarifni Faollashtirish</h3>
-                <p class="text-xs text-slate-400 mt-1">To'lov simulyatsiyasi ($2.99 / Oyiga)</p>
+                <p class="text-xs text-slate-400 mt-1">To'lov simulyatsiyasi (Demo Rejim)</p>
             </div>
 
             <form onsubmit="handleSubSubmit(event)" class="mt-6 space-y-4">
@@ -568,187 +613,210 @@
         <span id="toast-message" class="text-xs font-semibold">Bajarildi</span>
     </div>
 
-    <!-- JAVASCRIPT ULTIMATE AI PRESENTATION ENGINE -->
+    <!-- JAVASCRIPT APP LOGIC -->
     <script>
-        let currentAudience = 'business';
-        let currentQuizMode = 'student';
-        let generatedSlidesData = [];
-        let canvaActiveIndex = 0;
-        let activeDesignTheme = null;
+        /* ==========================================================================
+           1. STATE MANAGEMENT & DICTIONARIES
+           ========================================================================== */
+        let currentLang = 'uz';
+        let currentAudience = 'business'; // 'business' or 'education'
+        let currentQuizMode = 'student'; // 'student' or 'business'
 
         let activeQuizData = [];
         let currentQuizIndex = 0;
         let quizScore = 0;
+        let selectedOptionIndex = null;
 
+        // Dictionaries for UI Translation
+        const translations = {
+            uz: {
+                'nav-prez': "Slayd Generator",
+                'nav-quiz': "Smart Testlar",
+                'nav-notes': "Noutbuk / Konspekt",
+                'nav-pricing': "Tariflar",
+                'm-prez': "Slaydlar",
+                'm-quiz': "Testlar",
+                'm-notes': "Noutbuk",
+                'm-pricing': "Tariflar",
+                'btn-upgrade': "PRO versiyaga o'tish",
+                'hero-title': "Talabalar va Biznes uchun Sun'iy Intellekt Assistenti",
+                'hero-desc': "1 daqiqada taqdimot slaydlarini yarating, o'quvchilar yoki xodimlar uchun testlar generatsiya qiling hamda barcha fikrlaringizni tartiblang.",
+                'stat-slides': "Slaydlar Yaratilgan",
+                'stat-accuracy': "Savollar Aniqligi",
+                'stat-tests': "Testlar Yechilgan",
+                'prez-gen-header': "Slayd Generatori",
+                'prez-lbl-topic': "Mavzu yoki Biznes G'oya",
+                'prez-lbl-type': "Maqsadli Foydalanish Sohasi",
+                'aud-biz': "Biznes & Startap",
+                'aud-edu': "O'qish & Ta'lim",
+                'prez-lbl-details': "Qo'shimcha Konseptual Ma'lumot (Ixtiyoriy)",
+                'quick-ideas': "Mashhur shablonlar:",
+                'btn-generate-prez': "Prezentatsiya Slaydlarini Yaratish",
+                'slides-result-title': "Natija: Generatsiya Qilingan Pitch Deck",
+                'btn-copy': "Nusxalash",
+                'ph-title': "Slaydlar hali tuzilmadi",
+                'ph-desc': "Chap tomondagi maydonga mavzu kiriting va 'Prezentatsiya Slaydlarini Yaratish' tugmasini bosing.",
+                'quiz-gen-header': "Smart Test Generatori",
+                'mode-student': "O'quvchilar uchun",
+                'mode-biz': "Biznes / HR uchun",
+                'quiz-lbl-category': "Kategoriya va Yo'nalish",
+                'quiz-lbl-count': "Savollar Soni",
+                'quiz-lbl-custom': "Maxsus Kalit So'zlar yoki Mavzu",
+                'btn-generate-quiz': "Testni Shakllantirish va Boshlash",
+                'quiz-idle-title': "Interaktiv Test Rejimi",
+                'quiz-idle-desc': "Chap tomondan rejim va kategoriyani tanlab, 'Testni Shakllantirish va Boshlash' tugmasini bosing.",
+                'btn-next': "Keyingisi",
+                'result-title': "Natijangiz Tayyor!",
+                'result-sub': "Testni muvaffaqiyatli yakunladingiz",
+                'btn-retry': "Qayta topshirish",
+                'btn-go-prez': "Slayd Yaratishga o'tish",
+                'notes-header': "Tezkor Konspekt va G'oyalar",
+                'note-title-lbl': "G'oya yoki Konspekt Sarlavhasi",
+                'note-body-lbl': "Matn Mazmuni",
+                'btn-save-note': "Xotirada Saqlash (Offline)",
+                'saved-notes-title': "Saqlangan G'oyalar va Konspektlar",
+                'btn-clear-all': "Barchasini o'chirish",
+                'price-title': "O'zingizga Mos Tarifni Tanlang",
+                'price-sub': "O'quvchilar, ta'lim muassasalari va yirik biznes vakillari uchun maxsus qulay narxlar."
+            },
+            en: {
+                'nav-prez': "Slide Generator",
+                'nav-quiz': "Smart Quizzes",
+                'nav-notes': "Scratchpad / Notes",
+                'nav-pricing': "Pricing",
+                'm-prez': "Slides",
+                'm-quiz': "Quizzes",
+                'm-notes': "Notes",
+                'm-pricing': "Pricing",
+                'btn-upgrade': "Upgrade to PRO",
+                'hero-title': "AI Powered Assistant for Students & Businesses",
+                'hero-desc': "Generate structured pitch slides in seconds, auto-create quizzes for students or employees, and keep your ideas organised.",
+                'stat-slides': "Slides Created",
+                'stat-accuracy': "Question Accuracy",
+                'stat-tests': "Quizzes Solved",
+                'prez-gen-header': "Slide Outline Generator",
+                'prez-lbl-topic': "Topic or Business Idea",
+                'prez-lbl-type': "Target Focus Area",
+                'aud-biz': "Business & Startup",
+                'aud-edu': "Education & Study",
+                'prez-lbl-details': "Additional Context / Notes (Optional)",
+                'quick-ideas': "Quick Presets:",
+                'btn-generate-prez': "Generate Presentation Outline",
+                'slides-result-title': "Generated Pitch Deck Outline",
+                'btn-copy': "Copy Text",
+                'ph-title': "No slides generated yet",
+                'ph-desc': "Enter a topic on the left panel and click 'Generate Presentation Outline'.",
+                'quiz-gen-header': "Smart Assessment Generator",
+                'mode-student': "For Students",
+                'mode-biz': "For Business / HR",
+                'quiz-lbl-category': "Category & Domain",
+                'quiz-lbl-count': "Question Count",
+                'quiz-lbl-custom': "Custom Topic / Keywords",
+                'btn-generate-quiz': "Generate & Start Quiz",
+                'quiz-idle-title': "Interactive Assessment Mode",
+                'quiz-idle-desc': "Select a mode and category from the left panel to trigger AI-generated questions.",
+                'btn-next': "Next",
+                'result-title': "Quiz Complete!",
+                'result-sub': "You have completed the assessment successfully",
+                'btn-retry': "Retake Quiz",
+                'btn-go-prez': "Go to Slide Generator",
+                'notes-header': "Quick Notes & Scratchpad",
+                'note-title-lbl': "Note Title / Topic",
+                'note-body-lbl': "Note Details",
+                'btn-save-note': "Save Locally (Offline)",
+                'saved-notes-title': "Saved Scratchpad Notes",
+                'btn-clear-all': "Clear All Notes",
+                'price-title': "Choose Your Subscription Plan",
+                'price-sub': "Affordable options tailored for individual learners, educators, and scaling businesses."
+            }
+        };
+
+        // Quiz Categories List
         const quizCategories = {
             student: [
-                { id: 'math', name: 'Matematika va Mantiq' },
-                { id: 'cs', name: 'Informatika va Dasturlash' }
+                { id: 'math', name_uz: 'Matematika va Mantiq', name_en: 'Math & Logic' },
+                { id: 'cs', name_uz: 'Informatika va Dasturlash', name_en: 'Computer Science' },
+                { id: 'history', name_uz: 'Jahon Tarixi va Jamiyat', name_en: 'World History' },
+                { id: 'english', name_uz: 'Ingliz Tili (Grammar)', name_en: 'English Grammar' }
             ],
             business: [
-                { id: 'management', name: 'Biznes Boshqaruvi & Management' },
-                { id: 'marketing', name: 'Raqamli Marketing (SMM/SEO)' }
+                { id: 'management', name_uz: 'Biznes Boshqaruvi & Management', name_en: 'Business Management' },
+                { id: 'marketing', name_uz: 'Raqamli Marketing (SMM/SEO)', name_en: 'Digital Marketing' },
+                { id: 'hr', name_uz: 'HR va Xodimlarni Saralash', name_en: 'HR & Onboarding' },
+                { id: 'finance', name_uz: 'Finans va Startap Moliya', name_en: 'Finance & Accounting' }
             ]
         };
 
+        // Sample Pre-baked Quiz Data Pool
         const quizDatabase = {
-            math: [{ q: "Agar f(x) = 2x + 5 bo'lsa, f(3) ning qiymati nechaga teng?", opts: ["11", "9", "10", "6"], ans: 0 }],
-            cs: [{ q: "JavaScript tilida o'zgarmas o'zgaruvchi qaysi kalit so'z bilan e'lon qilinadi?", opts: ["let", "var", "const", "static"], ans: 2 }],
-            management: [{ q: "SWOT tahlilida 'O' harfi nimani anglatadi?", opts: ["Opportunities (Imkoniyatlar)", "Obstacles (G'ovlar)", "Operations (Amaliyot)", "Organization"], ans: 0 }],
-            marketing: [{ q: "ROI nimani anglatadi?", opts: ["Return on Investment", "Rate of Interest", "Risk of Inflation", "Revenue"], ans: 0 }]
+            math: [
+                { q: "Agar f(x) = 2x + 5 bo'lsa, f(3) ning qiymati nechaga teng?", opts: ["11", "9", "10", "6"], ans: 0 },
+                { q: "Uchburchakning ichki burchaklari yig'indisi necha darajaga teng?", opts: ["180°", "360°", "90°", "270°"], ans: 0 },
+                { q: "Tub sonni toping:", opts: ["15", "21", "17", "27"], ans: 2 }
+            ],
+            cs: [
+                { q: "JavaScript tilida o'zgarmas o'zgaruvchi qaysi kalit so'z bilan e'lon qilinadi?", opts: ["let", "var", "const", "static"], ans: 2 },
+                { q: "HTML nimaning qisqartmasi?", opts: ["HyperText Markup Language", "HighText Machine Language", "Hyperlink Text Mode Language", "Home Tool Markup Language"], ans: 0 },
+                { q: "CSS da elementning ichki masofasini (padding) belgilash uchun qaysi xususiyat ishlatiladi?", opts: ["margin", "padding", "spacing", "border"], ans: 1 }
+            ],
+            history: [
+                { q: "Amir Temur nechanchi yilda tug'ilgan?", opts: ["1336-yil", "1405-yil", "1370-yil", "1250-yil"], ans: 0 },
+                { q: "Birinchi jahon urushi qaysi yillarda bo'lib o'tgan?", opts: ["1914-1918", "1939-1945", "1905-1910", "1920-1925"], ans: 0 }
+            ],
+            english: [
+                { q: "Choose the correct sentence:", opts: ["She don't like coffee.", "She doesn't likes coffee.", "She doesn't like coffee.", "She not like coffee."], ans: 2 },
+                { q: "What is the past tense of 'Go'?", opts: ["Gone", "Went", "Goed", "Going"], ans: 1 }
+            ],
+            management: [
+                { q: "SWOT tahlilida 'O' harfi nimani anglatadi?", opts: ["Opportunities (Imkoniyatlar)", "Obstacles (G'ovlar)", "Operations (Amaliyot)", "Organization"], ans: 0 },
+                { q: "Agile metodologiyasida har kunlik 15 daqiqalik uchrashuv nima deyiladi?", opts: ["Sprint Review", "Daily Standup", "Retrospective", "Backlog Refinement"], ans: 1 }
+            ],
+            marketing: [
+                { q: "ROI nimani anglatadi?", opts: ["Return on Investment", "Rate of Interest", "Risk of Inflation", "Revenue of Industry"], ans: 0 },
+                { q: "SMM da 'CTR' nimani anglatadi?", opts: ["Click-Through Rate", "Cost-Through Rate", "Customer Total Reach", "Conversion Time Ratio"], ans: 0 }
+            ],
+            hr: [
+                { q: "Yangi xodimni kompaniya muhitiga moslashtirish jarayoni nima deyiladi?", opts: ["Recruitment", "Onboarding", "Outsourcing", "Benchmarking"], ans: 1 },
+                { q: "KPI qisqartmasining to'liq shakli qaysi?", opts: ["Key Performance Indicator", "Key Process Integration", "Known Product Index", "Key Person Interest"], ans: 0 }
+            ],
+            finance: [
+                { q: "Startap uchun 'Burn Rate' nimani ko'rsatadi?", opts: ["Kompaniyaning har oy yo'qotayotgan/sarflayotgan sof pul miqdori", "Yillik foyda ko'rsatkichi", "Soliq stavkasi", "Aksiyalar narxi"], ans: 0 },
+                { q: "B2B modeli nimani anglatadi?", opts: ["Business to Business", "Business to Consumer", "Buyer to Buyer", "Brand to Buyer"], ans: 0 }
+            ]
         };
 
-        // 12 TA EKSKLYUZIV DIZAYN STILI (THEMES)
-        const designThemes = {
-            cinematic_gaming: {
-                key: "cinematic_gaming",
-                name: "Cinematic Gaming",
-                bg: "bg-gradient-to-br from-slate-950 via-purple-950 to-pink-950 text-white border-2 border-pink-500/40 gaming-glow",
-                headerColor: "text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-400 to-cyan-400 font-extrabold tracking-tight",
-                accent: "bg-gradient-to-r from-pink-500 to-purple-600 text-white font-black",
-                cardBg: "bg-slate-900/80 border border-pink-500/20 text-slate-100 backdrop-blur-md",
-                badge: "bg-pink-500/20 text-pink-300 border border-pink-500/40 font-mono"
-            },
-            dark_premium: {
-                key: "dark_premium",
-                name: "Dark Premium",
-                bg: "bg-gradient-to-br from-zinc-950 via-stone-900 to-zinc-900 text-amber-100 border border-amber-500/30 shadow-2xl",
-                headerColor: "text-amber-300 font-serif",
-                accent: "bg-amber-500 text-zinc-950 font-bold",
-                cardBg: "bg-zinc-900/90 border border-amber-500/20 text-zinc-200",
-                badge: "bg-amber-500/20 text-amber-300 border border-amber-500/40"
-            },
-            apple_inspired: {
-                key: "apple_inspired",
-                name: "Apple Inspired",
-                bg: "bg-slate-900 text-slate-100 border border-slate-700/80 shadow-2xl",
-                headerColor: "text-white font-sans font-extrabold tracking-tight",
-                accent: "bg-blue-600 text-white font-semibold rounded-full",
-                cardBg: "bg-slate-800/60 border border-slate-700 text-slate-200 rounded-2xl",
-                badge: "bg-slate-800 text-slate-300 rounded-full"
-            },
-            glassmorphism: {
-                key: "glassmorphism",
-                name: "Modern Glassmorphism",
-                bg: "bg-gradient-to-r from-blue-950/90 via-indigo-950/90 to-purple-950/90 backdrop-blur-2xl text-white border border-white/20 shadow-2xl",
-                headerColor: "text-cyan-300 font-sans font-black",
-                accent: "bg-cyan-500 text-slate-950 font-black",
-                cardBg: "bg-white/10 backdrop-blur-md border border-white/20 text-white",
-                badge: "bg-cyan-500/20 text-cyan-200 border border-cyan-400/30"
-            },
-            cyberpunk_neon: {
-                key: "cyberpunk_neon",
-                name: "Cyberpunk Neon",
-                bg: "bg-black text-yellow-300 border-2 border-yellow-400 shadow-[0_0_30px_rgba(250,204,21,0.25)]",
-                headerColor: "text-yellow-400 font-mono font-black uppercase tracking-widest",
-                accent: "bg-yellow-400 text-black font-black uppercase",
-                cardBg: "bg-zinc-900/90 border border-yellow-400/40 text-yellow-100 font-mono",
-                badge: "bg-yellow-400/20 text-yellow-300 border border-yellow-400 font-mono"
-            },
-            futuristic_3d: {
-                key: "futuristic_3d",
-                name: "3D Futuristic",
-                bg: "bg-gradient-to-tr from-slate-950 via-indigo-950 to-blue-950 text-cyan-200 border-2 border-cyan-500/40",
-                headerColor: "text-cyan-400 font-mono tracking-wider",
-                accent: "bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-mono",
-                cardBg: "bg-slate-900/90 border-l-4 border-cyan-400 text-slate-100 shadow-xl",
-                badge: "bg-cyan-500/30 text-cyan-300 font-mono"
-            },
-            minimalist: {
-                key: "minimalist",
-                name: "Minimalist Pure",
-                bg: "bg-white text-slate-900 border border-slate-200 shadow-xl",
-                headerColor: "text-slate-900 font-sans font-black",
-                accent: "bg-slate-900 text-white font-bold",
-                cardBg: "bg-slate-50 border border-slate-200 text-slate-800",
-                badge: "bg-slate-200 text-slate-800 font-bold"
-            },
-            editorial_mag: {
-                key: "editorial_mag",
-                name: "Magazine Editorial",
-                bg: "bg-stone-900 text-stone-100 border border-stone-700",
-                headerColor: "text-amber-200 font-serif italic text-3xl",
-                accent: "bg-stone-100 text-stone-900 font-serif font-bold",
-                cardBg: "bg-stone-800/80 border-l-2 border-amber-300 text-stone-200",
-                badge: "bg-stone-700 text-amber-200 font-serif"
-            },
-            corporate_prof: {
-                key: "corporate_prof",
-                name: "Professional Corporate",
-                bg: "bg-gradient-to-br from-slate-900 via-blue-950 to-slate-950 text-slate-100 border border-blue-500/30",
-                headerColor: "text-blue-400 font-sans font-extrabold",
-                accent: "bg-blue-600 text-white font-bold",
-                cardBg: "bg-slate-800/80 border border-blue-500/20 text-slate-200",
-                badge: "bg-blue-500/20 text-blue-300"
-            },
-            creative_gradient: {
-                key: "creative_gradient",
-                name: "Colorful Creative",
-                bg: "bg-gradient-to-r from-purple-950 via-pink-950 to-rose-950 text-pink-100 border border-pink-500/30",
-                headerColor: "text-pink-300 font-sans font-black",
-                accent: "bg-gradient-to-r from-pink-500 to-rose-500 text-white font-bold",
-                cardBg: "bg-purple-900/40 border border-pink-500/20 text-pink-50",
-                badge: "bg-pink-500/20 text-pink-300"
-            },
-            documentary_style: {
-                key: "documentary_style",
-                name: "Documentary Style",
-                bg: "bg-gradient-to-br from-slate-950 via-amber-950/40 to-slate-900 text-amber-50 border border-amber-600/30",
-                headerColor: "text-amber-300 font-serif font-bold tracking-wide",
-                accent: "bg-amber-600 text-white font-serif",
-                cardBg: "bg-slate-900/90 border border-amber-600/20 text-amber-100",
-                badge: "bg-amber-600/20 text-amber-300 border border-amber-500/30"
-            },
-            luxury_presentation: {
-                key: "luxury_presentation",
-                name: "Luxury Presentation",
-                bg: "bg-gradient-to-br from-black via-zinc-950 to-stone-900 text-amber-200 border-2 border-amber-500/50 shadow-2xl",
-                headerColor: "text-amber-400 font-serif font-extrabold",
-                accent: "bg-gradient-to-r from-amber-400 to-yellow-500 text-black font-extrabold",
-                cardBg: "bg-zinc-900/90 border border-amber-500/30 text-zinc-100",
-                badge: "bg-amber-500/20 text-amber-300 font-serif border border-amber-500/40"
-            }
-        };
-
-        // DOMAIN ANALYZER (Mavzuni to'g'ri tushunish va kontentini shakllantirish engine)
-        function analyzeTopicDomain(rawTopic) {
-            const topic = rawTopic.toLowerCase();
-            
-            // 1. VIDEO GAMES DOMAIN
-            if (topic.includes('minecraft') || topic.includes('gta') || topic.includes('pubg') || topic.includes('cs') || topic.includes('game') || topic.includes('o\'yin') || topic.includes('dota') || topic.includes('roblox') || topic.includes('fortnite')) {
-                return 'gaming';
-            }
-            // 2. HISTORY & HISTORICAL PERSONS DOMAIN
-             if (topic.includes('tarix') || topic.includes('imperiya') || topic.includes('sash') || topic.includes('amir temur') || topic.includes('alisher navoiy') || topic.includes('urush') || topic.includes("o'zbekiston tarixi") || topic.includes('asr')) {
-                return 'history';
-            }
-            // 3. SCIENCE, AI & TECHNOLOGY DOMAIN
-            if (topic.includes('ai') || topic.includes('intellekt') || topic.includes('quyosh') || topic.includes('fizika') || topic.includes('kosmos') || topic.includes('dasturlash') || topic.includes('kod') || topic.includes('texnologiya')) {
-                return 'science_tech';
-            }
-            // 4. SPORTS DOMAIN
-            if (topic.includes('futbol') || topic.includes('sport') || topic.includes('messi') || topic.includes('ronaldo') || topic.includes('chempion') || topic.includes('olimpiada') || topic.includes('boshqarma')) {
-                return 'sports';
-            }
-            
-            return 'general';
-        }
-
+        /* ==========================================================================
+           2. INITIALIZATION & NAVIGATION FUNCTIONS
+           ========================================================================== */
         window.onload = function() {
             populateQuizCategories();
+            loadNotesFromStorage();
         };
 
         function switchTab(tabId) {
+            // Hide all tab contents
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+
+            // Show selected tab content
             const activeTab = document.getElementById(`tab-${tabId}`);
             if (activeTab) activeTab.classList.remove('hidden');
 
+            // Desktop Nav highlight
             document.querySelectorAll('nav button').forEach(btn => {
                 btn.className = "px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
             });
             const activeNavBtn = document.getElementById(`nav-${tabId}`);
             if (activeNavBtn) {
                 activeNavBtn.className = "px-4 py-2 rounded-lg text-sm font-semibold transition-all duration-200 bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm";
+            }
+
+            // Mobile Nav highlight
+            document.querySelectorAll('.mobile-nav').forEach(btn => {
+                btn.className = "mobile-nav flex flex-col items-center py-1 text-xs font-medium text-slate-500 dark:text-slate-400";
+            });
+            const activeMNavBtn = document.getElementById(`m-nav-${tabId}`);
+            if (activeMNavBtn) {
+                activeMNavBtn.className = "mobile-nav flex flex-col items-center py-1 text-xs font-medium text-blue-600 dark:text-blue-400";
             }
         }
 
@@ -758,468 +826,252 @@
             if (html.classList.contains('dark')) {
                 html.classList.remove('dark');
                 themeIcon.className = "fa-solid fa-sun text-amber-500";
+                showToast("Yorug' rejim yoqildi", "sun");
             } else {
                 html.classList.add('dark');
                 themeIcon.className = "fa-solid fa-moon";
+                showToast("Qorong'u rejim yoqildi", "moon");
             }
+        }
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'uz' ? 'en' : 'uz';
+            document.getElementById('lang-label').innerText = currentLang.toUpperCase();
+
+            // Update i18n text
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[currentLang] && translations[currentLang][key]) {
+                    el.innerText = translations[currentLang][key];
+                }
+            });
+
+            populateQuizCategories();
+            showToast(currentLang === 'uz' ? "Til O'zbekchaga o'zgartirildi" : "Language changed to English", "globe");
         }
 
         function showToast(msg, icon = 'circle-check') {
             const toast = document.getElementById('toast');
-            document.getElementById('toast-message').innerText = msg;
-            document.getElementById('toast-icon').className = `fa-solid fa-${icon} text-emerald-400 text-base`;
+            const toastMsg = document.getElementById('toast-message');
+            const toastIcon = document.getElementById('toast-icon');
+
+            toastMsg.innerText = msg;
+            toastIcon.className = `fa-solid fa-${icon} text-emerald-400 text-base`;
+
             toast.classList.remove('translate-y-20', 'opacity-0');
             toast.classList.add('translate-y-0', 'opacity-100');
+
             setTimeout(() => {
                 toast.classList.remove('translate-y-0', 'opacity-100');
                 toast.classList.add('translate-y-20', 'opacity-0');
             }, 3000);
         }
 
-        // MAIN AI PRESENTATION GENERATION
+        /* ==========================================================================
+           3. PRESENTATION GENERATOR LOGIC
+           ========================================================================== */
+        function setPrezAudience(type) {
+            currentAudience = type;
+            document.querySelectorAll('.aud-btn').forEach(btn => {
+                btn.className = "aud-btn px-4 py-2.5 rounded-xl border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-400 text-xs font-bold flex items-center justify-center gap-2";
+            });
+            const activeBtn = document.getElementById(`aud-${type}`);
+            if (activeBtn) {
+                activeBtn.className = "aud-btn px-4 py-2.5 rounded-xl border border-indigo-500 bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 text-xs font-bold flex items-center justify-center gap-2";
+            }
+        }
+
+        function fillPresetTopic(topicStr) {
+            document.getElementById('prez-topic').value = topicStr;
+        }
+
+        let presentationImageData = '';
+
+        function handlePresentationImage(event) {
+            const file = event.target.files && event.target.files[0];
+            if (!file) return;
+            if (!file.type.startsWith('image/')) {
+                showToast("Faqat rasm faylini tanlang!", "triangle-exclamation");
+                event.target.value = '';
+                return;
+            }
+            if (file.size > 5 * 1024 * 1024) {
+                showToast("Rasm hajmi 5 MB dan oshmasin!", "triangle-exclamation");
+                event.target.value = '';
+                return;
+            }
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                presentationImageData = e.target.result;
+                document.getElementById('prez-image-preview').src = presentationImageData;
+                document.getElementById('prez-image-preview-wrap').classList.remove('hidden');
+                showToast("Rasm yuklandi!", "image");
+            };
+            reader.readAsDataURL(file);
+        }
+
+        function removePresentationImage() {
+            presentationImageData = '';
+            document.getElementById('prez-image').value = '';
+            document.getElementById('prez-image-preview').src = '';
+            document.getElementById('prez-image-preview-wrap').classList.add('hidden');
+            showToast("Rasm olib tashlandi", "trash");
+        }
+
         function generatePresentation() {
             const topic = document.getElementById('prez-topic').value.trim();
             const details = document.getElementById('prez-details').value.trim();
-            const selectedStyleKey = document.getElementById('style-selector').value;
-            let slideCount = parseInt(document.getElementById('slide-count-range').value) || 8;
-            
-            if (slideCount > 15) slideCount = 15;
 
             if (!topic) {
-                showToast("Iltimos, prezentatsiya mavzusini kiriting!", "triangle-exclamation");
+                showToast(currentLang === 'uz' ? "Iltimos, mavzu yoki startap g'oyasini kiriting!" : "Please enter a topic or business idea!", "triangle-exclamation");
                 return;
             }
 
-            // Domain tahlili
-            const detectedDomain = analyzeTopicDomain(topic);
-
-            // Theme tanlovi
-            let chosenKey = selectedStyleKey;
-            if (chosenKey === 'auto') {
-                if (detectedDomain === 'gaming') chosenKey = 'cinematic_gaming';
-                else if (detectedDomain === 'history') chosenKey = 'documentary_style';
-                else if (detectedDomain === 'science_tech') chosenKey = 'futuristic_3d';
-                else if (detectedDomain === 'sports') chosenKey = 'creative_gradient';
-                else {
-                    const keys = Object.keys(designThemes);
-                    chosenKey = keys[Math.floor(Math.random() * keys.length)];
-                }
-            }
-            activeDesignTheme = designThemes[chosenKey] || designThemes.dark_premium;
-
-            document.getElementById('active-theme-badge').innerText = `Theme: ${activeDesignTheme.name}`;
-            document.getElementById('active-domain-badge').innerText = `Domain: ${detectedDomain.toUpperCase()}`;
-
-            const container = document.getElementById('slides-container');
-            container.innerHTML = `
-                <div class="text-center py-20">
-                    <div class="inline-block p-4 rounded-full bg-indigo-500/10 text-indigo-500 mb-3 animate-bounce">
-                        <i class="fa-solid fa-brain text-4xl"></i>
-                    </div>
-                    <p class="text-base font-extrabold text-slate-800 dark:text-slate-100">
-                        "${topic}" mavzusi chuqur AI tahlilidan o'tkazilmoqda...
-                    </p>
-                    <p class="text-xs text-slate-400 mt-1">Noyob faktlar, SVG/Visual elementlar va ${activeDesignTheme.name} dizayni shakllantirilmoqda (${slideCount} slayd)...</p>
+            const slidesContainer = document.getElementById('slides-container');
+            slidesContainer.innerHTML = `
+                <div class="text-center py-12">
+                    <i class="fa-solid fa-spinner fa-spin text-3xl text-indigo-500 mb-3"></i>
+                    <p class="text-xs text-slate-400 animate-pulse">AI-StudySync motori slaydlarni tayyorlamoqda...</p>
                 </div>
             `;
 
             setTimeout(() => {
-                generatedSlidesData = buildDomainSpecificDeck(topic, details, slideCount, activeDesignTheme, detectedDomain);
-                renderCanvaSlideCards(generatedSlidesData);
-                
-                document.getElementById('slide-count-indicator').innerText = `${generatedSlidesData.length} ta professional slayd tayyor (Unique ID: ${Math.random().toString(36).substr(2, 8).toUpperCase()})`;
-                document.getElementById('btn-presentation-mode').classList.remove('hidden');
-                
-                showToast(`"${topic}" mavzusida eksklyuziv prezentatsiya tayyorlandi!`, "wand-magic-sparkles");
-            }, 1100);
+                const slides = currentAudience === 'business' 
+                    ? generateBusinessSlides(topic, details)
+                    : generateEducationSlides(topic, details);
+
+                const presentationStyles = [
+                    { name: "Modern", colors: ["from-blue-500 to-cyan-500","from-violet-500 to-fuchsia-500","from-emerald-500 to-teal-500"], card: "rounded-2xl", badge: "rounded-full" },
+                    { name: "Creative", colors: ["from-pink-500 to-rose-500","from-orange-500 to-amber-500","from-purple-500 to-indigo-500"], card: "rounded-[2rem]", badge: "rounded-xl" },
+                    { name: "Academic", colors: ["from-sky-600 to-blue-800","from-teal-600 to-emerald-700","from-indigo-600 to-violet-800"], card: "rounded-xl", badge: "rounded-md" },
+                    { name: "Minimal", colors: ["from-slate-600 to-slate-800","from-cyan-600 to-blue-700","from-lime-600 to-green-700"], card: "rounded-lg", badge: "rounded-lg" },
+                    { name: "Vibrant", colors: ["from-fuchsia-500 to-purple-600","from-yellow-500 to-orange-600","from-cyan-500 to-blue-600"], card: "rounded-3xl", badge: "rounded-2xl" }
+                ];
+                const chosenStyle = presentationStyles[Math.floor(Math.random() * presentationStyles.length)];
+                renderSlideCards(slides, chosenStyle);
+                document.getElementById('slide-count-indicator') = `${slides.length} ta slayd yaratildi`;
+                showToast(currentLang === 'uz' ? "Prezentatsiya muvaffaqiyatli tayyorlandi!" : "Slides generated successfully!", "check");
+            }, 800);
         }
 
-        // DEEP DOMAIN-SPECIFIC CONTENT BUILDER
-        function buildDomainSpecificDeck(topic, details, count, theme, domain) {
-            let slideTemplates = [];
-
-            if (domain === 'gaming') {
-                // GAMING PRESENTATION MODE (Minecraft, GTA 5, PUBG va boshqalar)
-                slideTemplates = [
-                    {
-                        layout: 'title',
-                        title: `${topic} — Videoo'yin va Olamga Sayohat`,
-                        subtitle: "Gameplay, dunyo tuzilishi, tarix va qiziqarli faktlar bo'yicha to'liq tahlil.",
-                        img: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80",
-                        cards: []
-                    },
-                    {
-                        layout: 'image_text',
-                        title: `${topic} — Yaratilish Tarixi va Konsepsiya`,
-                        subtitle: details ? details : "O'yinning ilk versiyasidan boshlab bugungi kundagi global ommaboplik darajasiga erishish yo'li.",
-                        img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
-                        cards: [
-                            { icon: "fa-gamepad", title: "Janr va Platforma", desc: "Ko'p foydalanuvchili o'yin rejimi, ochiq dunyo va erkinlik." },
-                            { icon: "fa-code-branch", title: "Dvigatel va Grafika", desc: "Vizual uslub, piksellar yoki yuqori aniqlikdagi 3D renderlash." }
-                        ]
-                    },
-                    {
-                        layout: 'cards',
-                        title: "Asosiy O'yin Rejimlari va Mexanika",
-                        subtitle: "O'yinchilarga taqdim etiladigan asosiy rejimlar va imkoniyatlar.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-shield-halved", title: "Survival (Omon Qolish)", desc: "Resurslar yig'ish, qurollar va xavf-xatarlarga qarshi kurashish." },
-                            { icon: "fa-cubes", title: "Creative (Yaratuvchanlik)", desc: "Cheksiz resurslar, binolar va kreativ loyihalar barpo etish." }
-                        ]
-                    },
-                    {
-                        layout: 'statistics',
-                        title: "Global Statistikalar va Erishilgan Natijalar",
-                        subtitle: "Dunyo bo'ylab millionlab o'yinchilarni qamrab olgan rekord ko'rsatkichlar.",
-                        img: null,
-                        highlights: [
-                            { label: "O'yin Kirishlari", val: "50+ Milyard" },
-                            { label: "Oylik Faol O'yinchilar", val: "140+ Milyon" },
-                            { label: "Foydalanuvchilar Bahosi", val: "4.9 / 5.0" }
-                        ]
-                    },
-                    {
-                        layout: 'infographics',
-                        title: "Mobs, Bosslar va Xaritalar",
-                        subtitle: "O'yin dunyosida uchraydigan do'stona va dushman mavjudotlar hamda lokatsiyalar.",
-                        img: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=800&q=80",
-                        cards: [
-                            { icon: "fa-skull", title: "Xavfli Dushmanlar", desc: "Tungi vaqtda yoki maxsus zonalarda paydo bo'luvchi bosslar." },
-                            { icon: "fa-compass", title: "Biome va Lokatsiyalar", desc: "Turli iqlim va xususiyatlarga ega keng hududlar." }
-                        ]
-                    },
-                    {
-                        layout: 'timeline',
-                        title: "O'yinning Rivojlanish Bosqichlari",
-                        subtitle: "Muhim yangilanishlar va global turnirlar xronologiyasi.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-flag-checkered", title: "Alpha & Beta Davri", desc: "Dastlabki versiyalar va birinchi o'yinchilar hamjamiyati." },
-                            { icon: "fa-rocket", title: "Kibersport va Global Expansion", desc: "Xalqaro turnirlar va har yillik festivallar." }
-                        ]
-                    },
-                    {
-                        layout: 'full_image',
-                        title: "Jamiyat va Modding Madaniyati",
-                        subtitle: "Foydalanuvchilar tomonidan yaratilgan modlar, skinlar va servyerlar.",
-                        img: "https://images.unsplash.com/photo-1538481199705-c710c4e965fc?auto=format&fit=crop&w=800&q=80",
-                        cards: []
-                    },
-                    {
-                        layout: 'conclusion',
-                        title: "Xulosa — Nima Uchun Ushbu O'yin Mashhur?",
-                        subtitle: "Noyob gameplay, erkinlik va doimiy yangilanishlar tufayli o'yin madaniyatida o'chmas iz qoldirdi.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-trophy", title: "Natija", desc: "Dunyo bo'yicha eng ko'p sotilgan va o'ynalgan durdona o'yinlardan biri." }
-                        ]
-                    }
-                ];
-            } else if (domain === 'history') {
-                // HISTORY DOMAIN (O'zbekiston tarixi, Amir Temur va boshqalar)
-                slideTemplates = [
-                    {
-                        layout: 'title',
-                        title: `${topic} — Tarixiy Tahlil va Hujjatli Prezentatsiya`,
-                        subtitle: "Davrlarning muhim voqealari, madaniyat va tarixiy meros.",
-                        img: "https://images.unsplash.com/photo-1461360370896-922624d12aa1?auto=format&fit=crop&w=800&q=80",
-                        cards: []
-                    },
-                    {
-                        layout: 'image_text',
-                        title: "Tarixiy Sahifa va Kelib Chiqishi",
-                        subtitle: details ? details : "Tarixiy davrning shakllanishi, geosiyosiy o'rni va muhim omillar.",
-                        img: "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=800&q=80",
-                        cards: [
-                            { icon: "fa-landmark", title: "Tarixiy Manbalar", desc: "Qadimiy qo'lyozmalar, arxeologik topilmalar va tangalar." },
-                            { icon: "fa-scroll", title: "Hujjatlar va Solnomalar", desc: "Tarixchilar va guvohlarning qoldirgan muhim yozishmalari." }
-                        ]
-                    },
-                    {
-                        layout: 'timeline',
-                        title: "Asosiy Tarixiy Bosqichlar va Voqealar",
-                        subtitle: "Rivojlanish va burilish nuqtalari xronologik tartibda.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-hourglass-start", title: "Dastlabki Davr", desc: "Davlat va madaniyatning shakllanishi hamda yuksalishi." },
-                            { icon: "fa-crown", title: "Oltin Asr", desc: "Ilm-fan, me'morchilik va savdo-sotiqning gullab-yashnashi." }
-                        ]
-                    },
-                    {
-                        layout: 'cards',
-                        title: "Madaniyat, Ilm-Fan va Me'morchilik",
-                        subtitle: "Tarixiy davr davomida yaratilgan ulkan madaniy meros.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-monument", title: "Me'moriy Obidalar", desc: "Muazzam madrasalar, maqbaralar va qal'alar qurilishi." },
-                            { icon: "fa-book-open", title: "Ilmiy Kashfiyotlar", desc: "Matematika, astronomiya va tibbiyotdagi buyuk yutuqlar." }
-                        ]
-                    },
-                    {
-                        layout: 'conclusion',
-                        title: "Tarixiy O'rin va Zamonaviy Ahamiyati",
-                        subtitle: "Ushbu tarixiy meros bugungi kun avlodlari uchun ham g'urur va poydevor bo'lib xizmat qiladi.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-award", title: "Xulosa", desc: "Jahon sivilizatsiyasiga qo'shilgan munosib va o'chmas hissa." }
-                        ]
-                    }
-                ];
-            } else if (domain === 'science_tech') {
-                // SCIENCE & AI DOMAIN (Sun'iy intellekt, Quyosh tizimi, Dasturlash)
-                slideTemplates = [
-                    {
-                        layout: 'title',
-                        title: `${topic} — Ilmiy va Texnologik Prezentatsiya`,
-                        subtitle: "Zamonaviy tadqiqotlar, ishlash prinsipi va kelajak istiqbollari.",
-                        img: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
-                        cards: []
-                    },
-                    {
-                        layout: 'cards',
-                        title: "Ishlash Prinsipi va Algoritmlar",
-                        subtitle: details ? details : "Texnologiyaning asosi va undagi asosiy ilmiy mantiq.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-microchip", title: "Hisoblash Quvvati", desc: "Katta hajmdagi ma'lumotlarni sekundlar ichida qayta ishlash." },
-                            { icon: "fa-diagram-project", title: "Neyron Tarmoqlari", desc: "O'z-o me'yorlashtirish va moslashuvchan o'rganish tizimi." }
-                        ]
-                    },
-                    {
-                        layout: 'statistics',
-                        title: "Raqamlar va Imkoniyatlar",
-                        subtitle: "Texnologiyaning bugungi kungi samaradorlik va aniqlik ko'rsatkichlari.",
-                        img: null,
-                        highlights: [
-                            { label: "Aniq Natija", val: "99.4%" },
-                            { label: "Tezlik Ortishi", val: "10x Faster" },
-                            { label: "Qamrov", val: "Global Scale" }
-                        ]
-                    },
-                    {
-                        layout: 'conclusion',
-                        title: "Kelajak Va Istiqbollar",
-                        subtitle: "Ushbu texnologiya yaqin kelajakda insoniyat turmush tarzini tubdan o'zgartiradi.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-atom", title: "Xulosa", desc: "Iqtisodiyot va fanda inqilobiy imkoniyatlar ochilishi." }
-                        ]
-                    }
-                ];
-            } else {
-                // GENERAL / SPORTS DOMAIN
-                slideTemplates = [
-                    {
-                        layout: 'title',
-                        title: `${topic} — Chuqur Tahliliy Prezentatsiya`,
-                        subtitle: "Mavzu bo'yicha eng muhim faktlar, ko'rsatkichlar va xulosalar.",
-                        img: "https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&w=800&q=80",
-                        cards: []
-                    },
-                    {
-                        layout: 'cards',
-                        title: "Asosiy Faktlar va Yo'nalishlar",
-                        subtitle: details ? details : "Mavzuning eng muhim ustunlari va o'ziga xos jihatlari.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-star", title: "Birinchi Muhim Fakt", desc: `${topic} bo'yicha asosiy tushuncha va amaliyot.` },
-                            { icon: "fa-chart-line", title: "Rivojlanish Dinamikasi", desc: "Sohadagi ijobiy o'sish va erishilayotgan yutuqlar." }
-                        ]
-                    },
-                    {
-                        layout: 'conclusion',
-                        title: "Yakuniy Xulosalar va Takliflar",
-                        subtitle: "Ushbu yo'nalishda erishilgan natijalar va kelgusi qadamlar.",
-                        img: null,
-                        cards: [
-                            { icon: "fa-check-circle", title: "Mantiqiy Xulosa", desc: "Mavzu bo'yicha to'liq va aniq shakllantirilgan xulosa." }
-                        ]
-                    }
-                ];
-            }
-
-            let finalSlides = [];
-            for (let i = 0; i < count; i++) {
-                const template = slideTemplates[i % slideTemplates.length];
-                finalSlides.push({
-                    num: i + 1,
-                    layout: template.layout,
-                    badge: i === 0 ? "AI PRESENTATION DECK" : `SLAYD #${i + 1} • ${template.layout.toUpperCase()}`,
-                    theme: theme,
-                    title: template.title,
-                    subtitle: template.subtitle,
-                    img: template.img,
-                    highlights: template.highlights || [
-                        { label: "Aniqlik", val: "99%" },
-                        { label: "Reyting", val: "Top 1" },
-                        { label: "Sifat", val: "Pro Grade" }
-                    ],
-                    cards: template.cards && template.cards.length ? template.cards : [
-                        { icon: "fa-check", title: "Asosiy Jihat", desc: `${topic} bo'yicha muhim ma'lumot.` },
-                        { icon: "fa-bolt", title: "Natija", desc: "Tahliliy xulosa va amaliy ko'rsatkich." }
-                    ]
-                });
-            }
-
-            return finalSlides;
+        function generateBusinessSlides(topic, details) {
+            const lower = topic.toLowerCase();
+            const topicEmoji = lower.match(/game|o'yin|oyin|gaming|fc mobile/) ? ["🎮","🏆","🕹️","⚡"] :
+                lower.match(/sport|futbol|football/) ? ["⚽","🏅","🏟️","🔥"] :
+                lower.match(/eco|green|tabiat|ekolog/) ? ["🌱","🌍","♻️","🍃"] :
+                lower.match(/ai|sun'iy|intellekt|robot|texnolog|dastur/) ? ["🤖","💡","🧠","⚙️"] :
+                lower.match(/space|kosmos|sayyora|planet|koinot/) ? ["🚀","🪐","🌌","🔭"] :
+                lower.match(/food|taom|ovqat|restoran/) ? ["🍽️","🥗","🍳","🍰"] :
+                ["✨","📌","💎","🌟"];
+            const emoji = [...topicEmoji].sort(() => Math.random() - 0.5);
+            const titleSets = [
+                ["🎯 G'oya va maqsad","⚠️ Muammo va imkoniyat","💡 Bizning yechim","📈 O'sish strategiyasi"],
+                ["🚀 Loyiha taqdimoti","🔎 Bozor tahlili","🛠️ Mahsulot qanday ishlaydi?","🏁 Keyingi qadamlar"],
+                ["🌟 Asosiy konsepsiya","🧩 Ehtiyoj va muammo","⚡ Taklif qilinayotgan qiymat","📊 Rivojlanish rejasi"]
+            ];
+            const names = titleSets[Math.floor(Math.random() * titleSets.length)];
+            const palette = [
+                ["from-blue-500 to-indigo-600","from-rose-500 to-amber-600","from-emerald-500 to-teal-600","from-purple-500 to-indigo-600"],
+                ["from-fuchsia-500 to-purple-600","from-orange-500 to-pink-600","from-cyan-500 to-blue-600","from-lime-500 to-emerald-600"],
+                ["from-sky-500 to-cyan-600","from-amber-500 to-orange-600","from-violet-500 to-purple-600","from-teal-500 to-green-600"]
+            ][Math.floor(Math.random() * 3)];
+            return [
+                { num: 1, type: `${emoji[0]} START`, icon: "rocket", color: palette[0], title: `${topic} — ${names[0]}`, points: [`Loyiha yo'nalishi: ${topic}`, `Asosiy maqsad: ${topic} g'oyasini tushunarli taqdim etish`, details ? `Qo'shimcha ma'lumot: ${details.slice(0, 180)}` : `Taqdimot mavzusi: ${topic}`] },
+                { num: 2, type: `${emoji[1]} INSIGHT`, icon: "magnifying-glass-chart", color: palette[1], title: names[1], points: [`${topic} bilan bog'liq asosiy ehtiyoj va muammolar`, `Mavjud imkoniyatlarni aniqlash`, `Maqsadli auditoriya talablarini tushunish`] },
+                { num: 3, type: `${emoji[2]} SOLUTION`, icon: "lightbulb", color: palette[2], title: names[2], points: [`${topic} uchun qulay va tushunarli yondashuv`, `Muammoni hal qilishga qaratilgan asosiy imkoniyatlar`, `Foydalanuvchi uchun amaliy qiymat`] },
+                { num: 4, type: `${emoji[3]} ROADMAP`, icon: "chart-line", color: palette[3], title: names[3], points: [`Birinchi bosqich: ${topic} g'oyasini ishlab chiqish`, `Keyingi bosqich: sinov va takomillashtirish`, `Natija: barqaror rivojlanish`] }
+            ];
         }
 
-        // RENDER SLIDES IN CONTAINER
-        function renderCanvaSlideCards(slides) {
+        function generateEducationSlides(topic, details) {
+            const lower = topic.toLowerCase();
+            const emojiSet = lower.match(/game|o'yin|oyin|gaming/) ? ["🎮","🧩","🏆","🎯"] :
+                lower.match(/history|tarix|urush|davlat/) ? ["🏛️","📜","⚔️","🗺️"] :
+                lower.match(/math|matemat|hisob|formula/) ? ["🔢","📐","🧮","💡"] :
+                lower.match(/space|kosmos|sayyora|planet/) ? ["🪐","🚀","🌌","🔭"] :
+                lower.match(/biology|biolog|yurak|organ/) ? ["🧬","🔬","🫀","🌿"] :
+                ["📚","🔍","💡","📝"];
+            const titleSets = [
+                ["Mavzuga kirish","Asosiy tushunchalar","Misollar va qo'llanish","Xulosa va takrorlash"],
+                ["Nimani o'rganamiz?","Muhim ma'lumotlar","Amaliy ko'rinish","Bilimlarni jamlaymiz"],
+                ["Mavzuning mazmuni","Qanday ishlaydi?","Hayotdagi misollar","Asosiy xulosalar"]
+            ];
+            const names = titleSets[Math.floor(Math.random() * titleSets.length)];
+            const palette = [
+                ["from-cyan-500 to-blue-600","from-indigo-500 to-purple-600","from-emerald-500 to-teal-600","from-amber-500 to-orange-600"],
+                ["from-pink-500 to-rose-600","from-violet-500 to-fuchsia-600","from-sky-500 to-cyan-600","from-lime-500 to-green-600"],
+                ["from-blue-600 to-slate-700","from-teal-600 to-emerald-700","from-purple-600 to-indigo-700","from-orange-500 to-red-600"]
+            ][Math.floor(Math.random() * 3)];
+            return [
+                { num: 1, type: `${emojiSet[0]} INTRO`, icon: "book-open", color: palette[0], title: `${topic}: ${names[0]}`, points: [`Bugungi mavzu: ${topic}`, `${topic} bo'yicha asosiy maqsad va vazifalar`, details ? `Berilgan izoh: ${details.slice(0, 180)}` : `Ushbu taqdimotda ${topic} bosqichma-bosqich yoritiladi`] },
+                { num: 2, type: `${emojiSet[1]} THEORY`, icon: "atom", color: palette[1], title: names[1], points: [`${topic}ning muhim ta'riflari va xususiyatlari`, `Asosiy qoidalar va ularning o'zaro bog'liqligi`, `Mavzuga oid muhim faktlar`] },
+                { num: 3, type: `${emojiSet[2]} EXAMPLE`, icon: "flask", color: palette[2], title: names[2], points: [`${topic} bo'yicha sodda misol va tushuntirish`, `Bilimni amaliy vaziyatda qo'llash`, `Kuzatish va natijani tahlil qilish`] },
+                { num: 4, type: `${emojiSet[3]} SUMMARY`, icon: "lightbulb", color: palette[3], title: names[3], points: [`${topic} bo'yicha o'rganilgan asosiy fikrlar`, `Eng muhim tushunchalarni eslab qolish`, `Mavzuni mustahkamlash uchun savol va mashqlar`] }
+            ];
+        }
+
+        function renderSlideCards(slides, style) {
             const container = document.getElementById('slides-container');
             container.innerHTML = '';
-
-            slides.forEach((slide) => {
+            slides.forEach((slide, index) => {
                 const card = document.createElement('div');
-                card.className = `p-6 sm:p-8 rounded-3xl ${slide.theme.bg} shadow-2xl relative overflow-hidden transition-all duration-300 border`;
-                
-                let innerHtml = `
-                    <div class="flex items-center justify-between mb-3">
-                        <span class="text-[10px] font-black tracking-widest px-3 py-1 rounded-full ${slide.theme.badge}">
-                            ${slide.badge}
+                const layouts = ["p-5", "p-6", "p-5 border-l-4", "p-6"];
+                card.className = `${layouts[index % layouts.length]} ${style.card} border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/40 hover:border-indigo-500/50 transition-all shadow-sm`;
+                card.innerHTML = `
+                    <div class="flex items-center justify-between mb-3 flex-wrap gap-2">
+                        <span class="inline-flex items-center gap-2 text-xs font-extrabold px-3 py-1.5 ${style.badge} bg-gradient-to-r ${style.colors[index % style.colors.length]} text-white">
+                            <i class="fa-solid fa-${slide.icon}"></i> ${slide.num}-Slayd: ${slide.type}
                         </span>
-                        <span class="text-xs font-mono opacity-70">Slayd ${slide.num} / ${slides.length}</span>
+                        <span class="text-xs text-slate-400 font-mono">${style.name} · ${slide.num}/${slides.length}</span>
                     </div>
-                    <h3 class="text-xl sm:text-2xl font-black ${slide.theme.headerColor}">${slide.title}</h3>
-                    <p class="text-xs sm:text-sm mt-2 opacity-90 leading-relaxed font-medium">${slide.subtitle}</p>
+                    <h4 class="font-bold text-slate-800 dark:text-slate-100 text-base mb-2">${slide.title}</h4>
+                    ${index === 0 && presentationImageData ? `<img src="${presentationImageData}" alt="Taqdimot rasmi" class="w-full max-h-64 object-contain rounded-xl mb-4 border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900">` : ''}
+                    <ul class="space-y-1.5 pl-4 list-disc text-xs text-slate-600 dark:text-slate-300">
+                        ${slide.points.map(p => `<li>${p}</li>`).join('')}
+                    </ul>
                 `;
-
-                if (slide.img) {
-                    innerHtml += `
-                        <div class="mt-4 rounded-2xl overflow-hidden h-40 sm:h-48 w-full border border-white/10 relative shadow-md">
-                            <img src="${slide.img}" alt="Slide Visual" class="w-full h-full object-cover">
-                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                        </div>
-                    `;
-                }
-
-                if (slide.layout === 'statistics') {
-                    innerHtml += `
-                        <div class="grid grid-cols-3 gap-3 mt-5">
-                            ${slide.highlights.map(h => `
-                                <div class="${slide.theme.cardBg} p-3 rounded-2xl text-center">
-                                    <div class="text-lg sm:text-xl font-black ${slide.theme.headerColor}">${h.val}</div>
-                                    <div class="text-[10px] opacity-80 mt-0.5 font-semibold">${h.label}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                } else if (slide.cards && slide.cards.length) {
-                    innerHtml += `
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5">
-                            ${slide.cards.map(c => `
-                                <div class="${slide.theme.cardBg} p-4 rounded-2xl">
-                                    <i class="fa-solid ${c.icon} mb-2 text-base"></i>
-                                    <div class="font-bold text-xs">${c.title}</div>
-                                    <div class="text-[11px] opacity-80 mt-1">${c.desc}</div>
-                                </div>
-                            `).join('')}
-                        </div>
-                    `;
-                }
-
-                card.innerHTML = innerHtml;
                 container.appendChild(card);
             });
         }
 
-        // CANVA FULLSCREEN MODAL CONTROLLER
-        function openFullscreenPresentation() {
-            if (!generatedSlidesData.length) return;
-            canvaActiveIndex = 0;
-            document.getElementById('canva-modal').classList.remove('hidden');
-            renderCanvaStageSlide();
-        }
-
-        function closeFullscreenPresentation() {
-            document.getElementById('canva-modal').classList.add('hidden');
-        }
-
-        function renderCanvaStageSlide() {
-            const slide = generatedSlidesData[canvaActiveIndex];
-            const stage = document.getElementById('canva-slide-stage');
-            document.getElementById('canva-title').innerText = slide.title;
-            document.getElementById('canva-counter').innerText = `${canvaActiveIndex + 1} / ${generatedSlidesData.length}`;
-            document.getElementById('modal-theme-badge').innerText = slide.theme.name.toUpperCase();
-
-            let stageContent = `
-                <div>
-                    <span class="px-3 py-1 rounded-full ${slide.theme.badge} text-xs font-black uppercase tracking-wider">
-                        ${slide.badge}
-                    </span>
-                    <h2 class="text-2xl sm:text-4xl font-black mt-3 ${slide.theme.headerColor}">${slide.title}</h2>
-                    <p class="text-xs sm:text-sm mt-2 opacity-90 leading-relaxed font-medium">${slide.subtitle}</p>
-                </div>
-            `;
-
-            if (slide.img) {
-                stageContent += `
-                    <div class="my-3 rounded-2xl overflow-hidden h-36 sm:h-44 w-full border border-white/10 relative shadow-lg">
-                        <img src="${slide.img}" alt="Visual" class="w-full h-full object-cover">
-                    </div>
-                `;
+                function copyGeneratedSlides() {
+            const container = document.getElementById('slides-container');
+            const textContent = container.innerText;
+            if (!textContent || textContent.includes('hali tuzilmadi')) {
+                showToast(currentLang === 'uz' ? "Nusxalash uchun slayd yo'q!" : "No slides to copy!", "triangle-exclamation");
+                return;
             }
 
-            if (slide.layout === 'statistics') {
-                stageContent += `
-                    <div class="grid grid-cols-3 gap-4 my-3">
-                        ${slide.highlights.map(h => `
-                            <div class="${slide.theme.cardBg} p-4 rounded-2xl text-center">
-                                <div class="text-xl sm:text-2xl font-black ${slide.theme.headerColor}">${h.val}</div>
-                                <div class="text-xs opacity-80 mt-1">${h.label}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-            } else if (slide.cards && slide.cards.length) {
-                stageContent += `
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 my-3">
-                        ${slide.cards.map(c => `
-                            <div class="${slide.theme.cardBg} p-4 rounded-2xl">
-                                <i class="fa-solid ${c.icon} mb-1.5 text-base"></i>
-                                <div class="font-bold text-xs sm:text-sm">${c.title}</div>
-                                <div class="text-xs opacity-80 mt-0.5">${c.desc}</div>
-                            </div>
-                        `).join('')}
-                    </div>
-                `;
-            }
-
-            stage.className = `w-full max-w-5xl aspect-[16/9] ${slide.theme.bg} rounded-3xl p-8 sm:p-12 shadow-2xl flex flex-col justify-between relative transition-all duration-300`;
-            stage.innerHTML = stageContent;
-        }
-
-        function nextCanvaSlide() {
-            if (canvaActiveIndex < generatedSlidesData.length - 1) {
-                canvaActiveIndex++;
-                renderCanvaStageSlide();
-            }
-        }
-
-        function prevCanvaSlide() {
-            if (canvaActiveIndex > 0) {
-                canvaActiveIndex--;
-                renderCanvaStageSlide();
-            }
-        }
-
-        function copyGeneratedSlides() {
-            const textContent = document.getElementById('slides-container').innerText;
+            // Fallback execCommand for frame environment
             const dummy = document.createElement("textarea");
             document.body.appendChild(dummy);
             dummy.value = textContent;
             dummy.select();
             document.execCommand("copy");
             document.body.removeChild(dummy);
-            showToast("Prezentatsiya matni nusxalandi!", "copy");
+
+            showToast(currentLang === 'uz' ? "Slayd matni nusxalandi!" : "Slides copied to clipboard!", "copy");
         }
 
-        function printSlides() { window.print(); }
+        function printSlides() {
+            window.print();
+        }
 
-        /* QUIZ ENGINE */
+        /* ==========================================================================
+           4. INTERACTIVE QUIZ ENGINE LOGIC
+           ========================================================================== */
         function setQuizMode(mode) {
             currentQuizMode = mode;
+            const studentBtn = document.getElementById('mode-student-btn');
+            const bizBtn = document.getElementById('mode-business-btn');
+
+            if (mode === 'student') {
+                studentBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm flex items-center justify-center gap-1.5";
+                bizBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center justify-center gap-1.5";
+            } else {
+                bizBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition-all bg-white dark:bg-slate-700 text-emerald-600 dark:text-emerald-400 shadow-sm flex items-center justify-center gap-1.5";
+                studentBtn.className = "flex-1 py-2 rounded-xl text-xs font-bold transition-all text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white flex items-center justify-center gap-1.5";
+            }
             populateQuizCategories();
         }
 
@@ -1227,10 +1079,11 @@
             const select = document.getElementById('quiz-category');
             select.innerHTML = '';
             const cats = quizCategories[currentQuizMode];
+
             cats.forEach(c => {
                 const opt = document.createElement('option');
                 opt.value = c.id;
-                opt.innerText = c.name;
+                opt.innerText = currentLang === 'uz' ? c.name_uz : c.name_en;
                 select.appendChild(opt);
             });
         }
@@ -1241,6 +1094,8 @@
             const customTopic = document.getElementById('quiz-custom-topic').value.trim();
 
             const rawQuestions = quizDatabase[categoryId] || quizDatabase['management'];
+
+            // Build dynamic question set
             activeQuizData = [];
             for (let i = 0; i < count; i++) {
                 const baseQ = rawQuestions[i % rawQuestions.length];
@@ -1253,27 +1108,45 @@
 
             currentQuizIndex = 0;
             quizScore = 0;
+            selectedOptionIndex = null;
 
+            // Switch views inside Player Box
             document.getElementById('quiz-idle-view').classList.add('hidden');
             document.getElementById('quiz-result-view').classList.add('hidden');
             document.getElementById('quiz-active-view').classList.remove('hidden');
 
             renderCurrentQuestion();
+            showToast(currentLang === 'uz' ? "Test muvaffaqiyatli yaratildi!" : "Quiz generated!", "play");
         }
 
         function renderCurrentQuestion() {
             const qData = activeQuizData[currentQuizIndex];
-            document.getElementById('quiz-step-indicator').innerText = `${currentQuizIndex + 1} / ${activeQuizData.length}`;
-            document.getElementById('quiz-progress-bar').style.width = `${((currentQuizIndex + 1) / activeQuizData.length) * 100}%`;
-            document.getElementById('quiz-question-text').innerText = `${currentQuizIndex + 1}. ${qData.q}`;
+            selectedOptionIndex = null;
 
+            // Update Header & Progress
+            document.getElementById('quiz-step-indicator').innerText = `${currentQuizIndex + 1} / ${activeQuizData.length}`;
+            const pct = ((currentQuizIndex + 1) / activeQuizData.length) * 100;
+            document.getElementById('quiz-progress-bar').style.width = `${pct}%`;
+
+            document.getElementById('quiz-question-text').innerText = `${currentQuizIndex + 1}. ${qData.q}`;
+            document.getElementById('quiz-feedback-text').innerText = currentLang === 'uz' ? "Javob variantlaridan birini tanlang" : "Choose an answer option";
+
+            // Next button state
+            const btnNext = document.getElementById('btn-next-q');
+            btnNext.disabled = true;
+            btnNext.className = "px-5 py-2.5 rounded-xl bg-slate-200 dark:bg-slate-800 text-slate-400 font-bold text-xs transition-all flex items-center gap-2 cursor-not-allowed";
+
+            // Render Options
             const container = document.getElementById('quiz-options-container');
             container.innerHTML = '';
 
             qData.opts.forEach((optText, idx) => {
                 const optBtn = document.createElement('button');
                 optBtn.className = "w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-200 transition-all flex items-center justify-between";
-                optBtn.innerHTML = `<span>${String.fromCharCode(65 + idx)}) ${optText}</span><i class="fa-regular fa-circle text-slate-400"></i>`;
+                optBtn.innerHTML = `
+                    <span>${String.fromCharCode(65 + idx)}) ${optText}</span>
+                    <i class="fa-regular fa-circle text-slate-400 text-base option-icon"></i>
+                `;
                 optBtn.onclick = () => selectQuizOption(idx, optBtn);
                 container.appendChild(optBtn);
             });
@@ -1281,11 +1154,37 @@
 
         function selectQuizOption(optIdx, btnEl) {
             const qData = activeQuizData[currentQuizIndex];
-            if (optIdx === qData.ans) quizScore++;
+            const optionsContainer = document.getElementById('quiz-options-container');
+            const allBtns = optionsContainer.querySelectorAll('button');
 
+            // Disable re-selection
+            allBtns.forEach(b => b.disabled = true);
+
+            selectedOptionIndex = optIdx;
+            const isCorrect = optIdx === qData.ans;
+
+            if (isCorrect) {
+                quizScore++;
+                btnEl.className = "w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-bold transition-all flex items-center justify-between";
+                btnEl.querySelector('.option-icon').className = "fa-solid fa-circle-check text-emerald-500 text-base";
+                document.getElementById('quiz-feedback-text').innerText = currentLang === 'uz' ? "To'g'ri javob! Baraka topsin." : "Correct answer! Well done.";
+            } else {
+                btnEl.className = "w-full text-left p-4 rounded-2xl border-2 border-rose-500 bg-rose-500/10 text-rose-700 dark:text-rose-300 text-xs sm:text-sm font-bold transition-all flex items-center justify-between";
+                btnEl.querySelector('.option-icon').className = "fa-solid fa-circle-xmark text-rose-500 text-base";
+
+                // Highlight correct answer
+                const correctBtn = allBtns[qData.ans];
+                if (correctBtn) {
+                    correctBtn.className = "w-full text-left p-4 rounded-2xl border-2 border-emerald-500 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 text-xs sm:text-sm font-bold transition-all flex items-center justify-between";
+                    correctBtn.querySelector('.option-icon').className = "fa-solid fa-circle-check text-emerald-500 text-base";
+                }
+                document.getElementById('quiz-feedback-text').innerText = currentLang === 'uz' ? "Noto'g me'yor. To'g'ri javob ko'rsatildi." : "Incorrect. Correct option highlighted.";
+            }
+
+            // Enable Next Button
             const btnNext = document.getElementById('btn-next-q');
             btnNext.disabled = false;
-            btnNext.className = "px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all cursor-pointer";
+            btnNext.className = "px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-md transition-all flex items-center gap-2 cursor-pointer";
         }
 
         function nextQuestion() {
@@ -1293,63 +1192,119 @@
                 currentQuizIndex++;
                 renderCurrentQuestion();
             } else {
-                document.getElementById('quiz-active-view').classList.add('hidden');
-                document.getElementById('quiz-result-view').classList.remove('hidden');
-                document.getElementById('quiz-final-score').innerText = `${quizScore} / ${activeQuizData.length}`;
+                showQuizResults();
             }
         }
 
-        function restartQuiz() { generateQuiz(); }
+        function showQuizResults() {
+            document.getElementById('quiz-active-view').classList.add('hidden');
+            document.getElementById('quiz-result-view').classList.remove('hidden');
 
-        /* SCRATCHPAD & SUBSCRIPTION */
+            const total = activeQuizData.length;
+            const pct = Math.round((quizScore / total) * 100);
+
+            document.getElementById('quiz-final-score').innerText = `${quizScore} / ${total}`;
+            document.getElementById('quiz-score-percentage').innerText = `${pct}% ${currentLang === 'uz' ? "to'g'ri ko'rsatkich" : "accuracy score"}`;
+        }
+
+        function restartQuiz() {
+            generateQuiz();
+        }
+
+        /* ==========================================================================
+           5. SCRATCHPAD & LOCALSTORAGE LOGIC
+           ========================================================================== */
         function saveNote() {
-            const title = document.getElementById('note-title').value.trim();
-            const body = document.getElementById('note-body').value.trim();
-            if (!title || !body) return;
+            const titleInput = document.getElementById('note-title');
+            const bodyInput = document.getElementById('note-body');
+
+            const title = titleInput.value.trim();
+            const body = bodyInput.value.trim();
+
+            if (!title || !body) {
+                showToast(currentLang === 'uz' ? "Iltimos, sarlavha va matnni to'ldiring!" : "Please fill in title and body!", "triangle-exclamation");
+                return;
+            }
 
             const notes = getStoredNotes();
-            notes.unshift({ id: Date.now(), title, body, date: new Date().toLocaleDateString() });
+            const newNote = {
+                id: Date.now(),
+                title: title,
+                body: body,
+                date: new Date().toLocaleDateString()
+            };
+
+            notes.unshift(newNote);
             localStorage.setItem('aisync_notes', JSON.stringify(notes));
 
-            document.getElementById('note-title').value = '';
-            document.getElementById('note-body').value = '';
+            titleInput.value = '';
+            bodyInput.value = '';
+
             renderNotesList(notes);
-            showToast("Konspekt saqlandi!");
+            showToast(currentLang === 'uz' ? "Konspekt saqlandi!" : "Note saved locally!", "floppy-disk");
         }
 
         function getStoredNotes() {
-            try { return JSON.parse(localStorage.getItem('aisync_notes')) || []; } catch(e) { return []; }
+            try {
+                const stored = localStorage.getItem('aisync_notes');
+                return stored ? JSON.parse(stored) : [];
+            } catch (e) {
+                return [];
+            }
         }
 
-        function loadNotesFromStorage() { renderNotesList(getStoredNotes()); }
+        function loadNotesFromStorage() {
+            const notes = getStoredNotes();
+            renderNotesList(notes);
+        }
 
         function renderNotesList(notes) {
             const container = document.getElementById('notes-list-container');
-            container.innerHTML = notes.length ? '' : `<p class="text-xs text-slate-400 text-center py-8">Saqlangan konspektlar yo'q.</p>`;
+            container.innerHTML = '';
+
+            if (notes.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-12 border-2 border-dashed border-slate-200 dark:border-slate-800 rounded-2xl">
+                        <p class="text-xs text-slate-400">${currentLang === 'uz' ? "Hali hech qanday saqlangan konspekt yo'q." : "No saved notes found."}</p>
+                    </div>
+                `;
+                return;
+            }
 
             notes.forEach(note => {
-                const card = document.createElement('div');
-                card.className = "p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40";
-                card.innerHTML = `
-                    <div class="flex justify-between font-bold text-sm"><span>${note.title}</span><span class="text-[10px] text-slate-400">${note.date}</span></div>
-                    <p class="text-xs text-slate-600 dark:text-slate-300 mt-2">${note.body}</p>
-                    <button onclick="deleteNote(${note.id})" class="mt-2 text-rose-500 text-[11px] font-bold"><i class="fa-solid fa-trash"></i> O'chirish</button>
+                const noteCard = document.createElement('div');
+                noteCard.className = "p-4 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 relative group";
+                noteCard.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <h4 class="font-bold text-slate-800 dark:text-slate-100 text-sm">${note.title}</h4>
+                        <span class="text-[10px] text-slate-400 font-mono">${note.date}</span>
+                    </div>
+                    <p class="text-xs text-slate-600 dark:text-slate-300 mt-2 whitespace-pre-wrap">${note.body}</p>
+                    <button onclick="deleteNote(${note.id})" class="mt-3 text-[11px] text-rose-500 hover:text-rose-600 font-semibold flex items-center gap-1">
+                        <i class="fa-solid fa-trash-can"></i> ${currentLang === 'uz' ? "O'chirish" : "Delete"}
+                    </button>
                 `;
-                container.appendChild(card);
+                container.appendChild(noteCard);
             });
         }
 
         function deleteNote(id) {
-            const notes = getStoredNotes().filter(n => n.id !== id);
+            let notes = getStoredNotes();
+            notes = notes.filter(n => n.id !== id);
             localStorage.setItem('aisync_notes', JSON.stringify(notes));
             renderNotesList(notes);
+            showToast(currentLang === 'uz' ? "Konspekt o'chirildi" : "Note deleted", "trash-can");
         }
 
         function clearAllNotes() {
             localStorage.removeItem('aisync_notes');
             renderNotesList([]);
+            showToast(currentLang === 'uz' ? "Barcha konspektlar tozalandi" : "All notes cleared", "trash-can");
         }
 
+        /* ==========================================================================
+           6. SUBSCRIPTION MODAL & PAYMENTS
+           ========================================================================== */
         function openSubscriptionModal(planName) {
             document.getElementById('sub-modal-title').innerText = planName;
             document.getElementById('sub-modal').classList.remove('hidden');
@@ -1362,7 +1317,7 @@
         function handleSubSubmit(e) {
             e.preventDefault();
             closeSubscriptionModal();
-            showToast("PRO Rejim faollashtirildi!", "crown");
+            showToast(currentLang === 'uz' ? "PRO Tarif faollashtirildi! Rahmat." : "Subscription activated successfully!", "crown");
         }
     </script>
 </body>
